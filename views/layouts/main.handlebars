@@ -8,11 +8,12 @@
 	<link rel="stylesheet" href="/assets/css/reset.css" />
 	<link rel="stylesheet" href="/assets/css/main.css" />
 	<link rel="stylesheet" href="/assets/css/signinpage.css" />
+	<link rel="stylesheet" href="/assets/css/signuppage.css" /> {{!-- ORDER OF SCRIPT IT IMPORTANT! PLEASE DONT CHANGE UNLESS
+	ABSOLUTELY NECESSARY! -PW --}}
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="/assets/js/jquery.min.js"></script>
 	<script src="/assets/js/jquery.scrolly.min.js"></script>
@@ -26,13 +27,11 @@
 <body>
 	{{{ body }}}
 
-	<hr style="height:5px;border:none;color:#333;background-color:#333;" />
-	DEVELOPER AND CUSTOMER loginPage
-	{{> MainPage/loginPage}}
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> DEVELOPER AND CUSTOMER loginPage {{> MainPage/loginPage}}
 
-	<hr style="height:5px;border:none;color:#333;background-color:#333;" />
-	DEVELOPER SIGNUP loginPage
-	{{> Developer/developerLogin}}
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> DEVELOPER SIGNUP Page {{> Developer/developerSignup}}
+
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> CUSTOMER SIGNUP Page {{> Customer/customerSignup}}
 </body>
 
 </html>

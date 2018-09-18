@@ -39,7 +39,6 @@ div#LoginForm {
   background: #ffffff none repeat scroll 0 0;
   border-radius: 2px;
   margin: 10px auto 30px;
-  max-width: 38%;
   padding: 50px 70px 70px 71px;
 }
 .login-form .form-group {
@@ -84,3 +83,29 @@ div#LoginForm {
   font-size: 13px;
   text-decoration: none;
 }
+@media screen and (max-width: 1280px) {
+  .main-div {
+    max-width: 38%;
+  }
+}
+@media screen and (max-width: 980px) {
+  .main-div {
+    max-width: 70%;
+  }
+}
+@media screen and (max-width: 736px) {
+  .main-div {
+    max-width: 90%;
+    margin: 10px 10px;
+    padding: 10px;
+  }
+}
+
+/* Maynot need this small size vh */
+/* @media screen and (max-width: 480px) {
+  .main-div {
+    max-width: 100%;
+    margin: 5px;
+    padding: 5px;
+  }
+} */
