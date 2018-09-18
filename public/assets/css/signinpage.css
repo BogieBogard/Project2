@@ -85,7 +85,7 @@ div#LoginForm {
 }
 @media screen and (max-width: 1280px) {
   .main-div {
-    max-width: 38%;
+    max-width: 70%;
   }
 }
 @media screen and (max-width: 980px) {
