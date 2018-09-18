@@ -47,10 +47,23 @@ div#LoginForm {
 .login-form {
   text-align: center;
 }
+.signup,
+.forgot {
+  width: 50%;
+  text-align: left;
+  margin-bottom: 30px;
+  float: left;
+}
+.signup a,
 .forgot a {
   color: #777777;
   font-size: 14px;
   text-decoration: underline;
+}
+.signup{
+  /* display: block; */
+  text-align: right;
+  float: left;
 }
 .login-form .btn.btn-primary {
   background: #f0ad4e none repeat scroll 0 0;
@@ -61,10 +74,6 @@ div#LoginForm {
   height: 50px;
   line-height: 50px;
   padding: 0;
-}
-.forgot {
-  text-align: left;
-  margin-bottom: 30px;
 }
 .botto-text {
   color: #ffffff;
@@ -100,7 +109,6 @@ div#LoginForm {
     padding: 10px;
   }
 }
-
 /* Maynot need this small size vh */
 /* @media screen and (max-width: 480px) {
   .main-div {

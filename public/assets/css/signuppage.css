@@ -21,6 +21,14 @@ div#signupform {
 .form-list {
   width: 470px;
 }
+.switch{
+  height: 50px;
+}
+.switch a{
+  color: #777777;
+  font-size: 10px;
+  text-decoration: underline;
+}
 .signage h2 {
   color: #444444;
   font-size: 18px;
