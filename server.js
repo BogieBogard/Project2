@@ -7,9 +7,12 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
+const routes = require("./controllers/devTinder_controller");
+
 // Sets up the Express App
 // =============================================================
 var app = express();
+const exphbs = require('express-handlebars');
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
@@ -24,6 +27,10 @@ app.use(bodyParser.json());
 
 // Static directory
 app.use(express.static("public"));
+
+app.use(routes);
+app.engine("handlebars", exphbs({ defaultLayout: "main"})); // set the main html page load out.
+app.set("view engine", "handlebars"); // set the engine run root dir.
 
 // Routes - NEED TO INSERT OUR ROUTES HERE
 // =============================================================
