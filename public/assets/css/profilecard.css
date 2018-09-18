@@ -28,8 +28,10 @@
 }
 .profilebody {
   width: 80%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   margin-left: 20%;
+  padding: 50px;
   float: left;
   overflow-y: scroll;
   border-color: red;
@@ -40,5 +42,9 @@
   display: none;
 }
 .dev-profile-content{
-    height: 100vh;
+    padding: 50px 20px;
+    height: 150px;
+    border-color: red;
+  border-width: 1px;
+  border-style: solid;
 }
