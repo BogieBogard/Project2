@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>DevTinder: Find your next partner with ease!</title>
+
+	<link rel="stylesheet" href="/assets/css/reset.css" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<link rel="stylesheet" href="/assets/css/signinpage.css" />
+	<link rel="stylesheet" href="/assets/css/signuppage.css" />
+	<link rel="stylesheet" href="/assets/css/profilecard.css" />
+	
+	{{!-- ORDER OF SCRIPT IT IMPORTANT! PLEASE DONT CHANGE UNLESS ABSOLUTELY NECESSARY! -PW --}}
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+	<script src="/assets/js/rangeslider.js"></script>
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.scrolly.min.js"></script>
+	<script src="/assets/js/jquery.scrollex.min.js"></script>
+	<script src="/assets/js/skel.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
+
+</head>
+
+<body>
+	{{{ body }}}
+
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> DEVELOPER AND CUSTOMER loginPage {{> MainPage/loginPage}}
+
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> DEVELOPER SIGNUP Page {{> Developer/developerSignup}}
+
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> CUSTOMER SIGNUP Page {{> Customer/customerSignup}}
+
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> DEVELOPER PROFILE Page {{> Developer/developerProfile}}
+
+	<hr style="height:5px;border:none;color:#333;background-color:#333;" /> CUSTOMER PROFILE Page {{> Customer/customerProfile}}
+
+</body>
+
+</html>

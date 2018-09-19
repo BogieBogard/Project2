@@ -9,9 +9,12 @@ var bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
 
+const routes = require("./controllers/devTinder_controller");
+
 // Sets up the Express App
 // =============================================================
 var app = express();
+const exphbs = require('express-handlebars');
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
@@ -30,6 +33,10 @@ app.use(express.static(path.join(__dirname, "public")));
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(routes);
+app.engine("handlebars", exphbs({ defaultLayout: "main"})); // set the main html page load out.
+app.set("view engine", "handlebars"); // set the engine run root dir.
 
 // Routes - NEED TO INSERT OUR ROUTES HERE
 // =============================================================
