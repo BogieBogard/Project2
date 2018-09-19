@@ -9,7 +9,7 @@ var bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
 
-const routes = require("./controllers/devTinder_controller");
+// const routes = require("./controllers/devTinder_controller");
 
 // Sets up the Express App
 // =============================================================
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(routes);
+// app.use(routes);
 app.engine("handlebars", exphbs({ defaultLayout: "main"})); // set the main html page load out.
 app.set("view engine", "handlebars"); // set the engine run root dir.
 
