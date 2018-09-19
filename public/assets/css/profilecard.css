@@ -41,10 +41,98 @@
 .profilebody::-webkit-scrollbar {
   display: none;
 }
-.dev-profile-content{
-    padding: 50px 20px;
-    height: 150px;
-    border-color: red;
+div#about.dev-profile-content{
+    background-color: rgb(243, 242, 242);
+}
+.dev-profile-content {
+  display: table;
+  padding: 50px 20px;
+  /* height: 30%; */
+  border-color: red;
   border-width: 1px;
   border-style: solid;
+}
+
+div#experience {
+  width: 100%;
+}
+
+/* Circular Graph for Prof on coding languages */
+
+.flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.single-chart {
+  width: 20%;
+  font-size: 8px;
+  justify-content: space-around;
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke: #ff9f00;
+}
+
+.circular-chart.green .circle {
+  stroke: #4cc790;
+}
+
+.circular-chart.blue .circle {
+  stroke: #3c9ee5;
+}
+
+.circular-chart.red .circle {
+  stroke: #bd2323;
+}
+
+.circular-chart.lightblue .circle {
+  stroke: #8dbfe2;
+}
+.circular-chart.yellow .circle {
+  stroke: yellow;
+}
+.circular-chart.babyblue .circle {
+  stroke: lightblue;
+}
+
+.percentage {
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+
+div#contrabution.dev-profile-content button{
+    width: 20%;
+    margin: 5px 20px;
+
 }
