@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt-nodejs");
 
 //going to need to modify this strategy to look in both dev table and customer table
 //currently only looks in dev table
+//comment
 module.exports = passport => {
   passport.serializeUser(function(user, done) {
     done(null, user);
