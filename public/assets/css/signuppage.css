@@ -10,7 +10,7 @@ div#signupform {
     #acb6e5,
     #74ebd5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  padding: 10vh;
+  padding: 10px;
 }
 .wrapper-div {
   height: 100%;
@@ -53,6 +53,7 @@ div#signupform {
   border-radius: 2px;
   margin: 10px auto 30px;
   padding: 40px 10px 10px;
+  max-height: 100%;
 }
 .signup-form .form-list {
   margin-bottom: 10px;

@@ -34,13 +34,23 @@ router.get("/newcustomer", (req, res) => {
 });
 
 
-router.get("/123", (req, res) => {
+router.get("/1", (req, res) => {
   console.log("Developer Profile");
-  res.render("partials/Developer/developerProfile")
+  res.render("postAuth/Developer/developerProfile")
 });
 
-router.get("/456", (req, res) => {
+router.get("/2", (req, res) => {
+  console.log("Developer Card");
+  res.render("postAuth/Developer/developerProfilecard")
+});
+
+router.get("/3", (req, res) => {
   console.log("Customer Profile");
-  res.render("partials/Customer/customerSignup")
+  res.render("postAuth/Customer/customerProfile")
+});
+
+router.get("/4", (req, res) => {
+  console.log("Customer Card");
+  res.render("postAuth/Customer/customerProfilecard")
 });
 module.exports = router; // why does this export custom methods too?
