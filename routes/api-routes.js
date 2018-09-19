@@ -27,11 +27,25 @@ module.exports = app => {
         res.send(false);
       } else {
         bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(req.body.password, salt, (err, hash) => {
+          bcrypt.hash(req.body.password, salt, null, (err, hash) => {
             if (err) throw err;
             db.Developer.create({
+              name: req.body.name,
               username: req.body.username,
-              password: hash
+              password: hash,
+              location: req.body.location,
+              photo: req.body.photo,
+              portfolio: req.body.portfolio,
+              html: req.body.html,
+              css: req.body.css,
+              javascript: req.body.javascript,
+              java: req.body.java,
+              nodeJS: req.body.nodeJS,
+              angular: req.body.angular,
+              react: req.body.react,
+              python: req.body.python,
+
+
             }).then(result => {
               console.log("user created");
               //return true if user was successfully created
@@ -56,11 +70,16 @@ module.exports = app => {
         res.send(false);
       } else {
         bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(req.body.password, salt, (err, hash) => {
+          bcrypt.hash(req.body.password, salt, null, (err, hash) => {
             if (err) throw err;
-            db.Developer.create({
+            db.Customer.create({
+              name: req.body.name,
               username: req.body.username,
-              password: hash
+              password: hash,
+              location: req.body.location,
+              photo: req.body.photo,
+              numberOfProjects: req.body.numberOfProjects,
+            
             }).then(result => {
               console.log("user created");
               //return true if user was successfully created
