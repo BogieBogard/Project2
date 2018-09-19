@@ -6,6 +6,8 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+const passport = require("passport");
+const path = require("path");
 
 const routes = require("./controllers/devTinder_controller");
 
@@ -26,7 +28,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Static directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
+
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(routes);
 app.engine("handlebars", exphbs({ defaultLayout: "main"})); // set the main html page load out.
@@ -39,9 +45,15 @@ app.set("view engine", "handlebars"); // set the engine run root dir.
 // require("./routes/author-api-routes.js")(app);
 // require("./routes/html-routes.js")(app);
 
+//this is our strategy
+require("./passport")(passport);
+require("./routes/auth.js")(app);
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
