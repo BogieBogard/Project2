@@ -34,9 +34,9 @@
   padding: 50px;
   float: left;
   overflow-y: scroll;
-  border-color: red;
+  /* border-color: red;
   border-width: 1px;
-  border-style: solid;
+  border-style: solid; */
 }
 .profilebody::-webkit-scrollbar {
   display: none;
@@ -48,9 +48,9 @@ div#about.dev-profile-content{
   display: table;
   padding: 50px 20px;
   /* height: 30%; */
-  border-color: red;
+  /* border-color: red;
   border-width: 1px;
-  border-style: solid;
+  border-style: solid; */
 }
 
 div#experience {
