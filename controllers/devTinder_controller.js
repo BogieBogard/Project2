@@ -45,12 +45,12 @@ router.get("/2", (req, res) => {
 });
 
 router.get("/3", (req, res) => {
-  console.log("Customer Profile");
-  res.render("postAuth/Customer/customerProfile")
+  console.log("Developer Control");
+  res.render("postAuth/Developer/developerControl")
 });
 
 router.get("/4", (req, res) => {
-  console.log("Customer Card");
+  console.log("Customer Control");
   res.render("postAuth/Customer/customerProfilecard")
 });
 module.exports = router; // why does this export custom methods too?

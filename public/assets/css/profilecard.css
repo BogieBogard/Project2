@@ -9,6 +9,10 @@
   color: grey;
   font-size: 18px;
 }
+.rating{
+  padding: 0px 10%;
+}
+#rating,
 #viewprofile,
 #addproject{
     width: 80%;
