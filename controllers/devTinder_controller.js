@@ -51,6 +51,6 @@ router.get("/3", (req, res) => {
 
 router.get("/4", (req, res) => {
   console.log("Customer Control");
-  res.render("postAuth/Customer/customerProfilecard")
+  res.render("postAuth/Customer/customerControl")
 });
 module.exports = router; // why does this export custom methods too?
