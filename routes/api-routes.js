@@ -1,5 +1,6 @@
 const db = require("../models");
 const bcrypt = require("bcrypt-nodejs");
+const checkAuth = require("../check-auth.js");
 
 module.exports = app => {
   app.get("/api/developers", (req, res) => {
@@ -13,8 +14,8 @@ module.exports = app => {
       res.json(result);
     });
   });
-
-  //missing all fields except username and password
+  
+  //this route creates a developer user
   app.post("/api/developers", (req, res) => {
     //first check the developer database for the user name the user
     //is trying to claim
@@ -57,6 +58,7 @@ module.exports = app => {
                   angular: req.body.angular,
                   react: req.body.react,
                   python: req.body.python
+
                 }).then(result => {
                   console.log("user created");
                   //return true if user was successfully created
@@ -70,7 +72,7 @@ module.exports = app => {
     });
   });
 
-  //missing all fields except username and password
+  //this route creates a customer user
   app.post("/api/customers", (req, res) => {
     db.Customer.findOne({
       where: {
@@ -112,4 +114,28 @@ module.exports = app => {
       }
     });
   });
+
+
+  //this route creates a new project
+  app.post("/api/project", checkAuth, (req,res) => {
+    let projObj = {
+      name: req.body.name,
+      dueDate: req.body.dueDate,
+      cost: req.body.cost,
+      html: req.body.html,
+      css: req.body.css,
+      javascript: req.body.javascript,
+      java: req.body.java,
+      nodeJS: req.body.nodeJS,
+      angular: req.body.angular,
+      react: req.body.react,
+      python: req.body.python,
+    };
+    db.Project.create({
+      projObj
+    }).then(result => {
+      console.log("New Project Created");
+      res.send(true);
+    })
+  })
 };
