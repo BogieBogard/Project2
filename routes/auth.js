@@ -1,7 +1,11 @@
 const db = require("../models");
 const passport = require("passport");
+const jwt = require("jsonwebtoken");
 
 module.exports = app => {
+
+    //once the user hits the sign in button, we need to re route them to their profile page
+    //need to figure out best way to do this
     app.post("/login/developer", function(req, res, next) {
         console.log(req.body);
         passport.authenticate("local", function(err, user, info){
@@ -15,7 +19,11 @@ module.exports = app => {
                 if(err) {
                     return next(err);
                 }
-                return res.status(200).json({user});
+                const token = jwt.sign({username: user.username , password: user.password}, "da_secret", {expiresIn: "24h"});
+                return res.status(200).json({
+                    token: token,
+                    expiresIn: 86400
+                });
             });
         })(req,res,next);
     });
@@ -33,7 +41,11 @@ module.exports = app => {
                 if(err) {
                     return next(err);
                 }
-                return res.status(200).json({user});
+                const token = jwt.sign({username: user.username, password: user.password}, "da_secret", {expiresIn: "24h"});
+                return res.status(200).json({
+                    token: token,
+                    expiresIn: 86400
+                });
             });
         })(req,res,next);
     });

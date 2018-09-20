@@ -1,4 +1,3 @@
-let express = require("express");
 
 let router = express.Router();
 // MAIN TESTING PAGE: CAN BE DELETED AT ANYTIME AFTER DEPLOYMENT
@@ -53,4 +52,4 @@ router.get("/4", (req, res) => {
   console.log("Customer Control");
   res.render("postAuth/Customer/customerControl")
 });
-module.exports = router; // why does this export custom methods too?
+module.exports = router;
