@@ -35,11 +35,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // app.use(routes);
+//=============================================================================================
 app.engine("handlebars", exphbs({ defaultLayout: "main"})); // set the main html page load out.
 app.set("view engine", "handlebars"); // set the engine run root dir.
 
 // Routes - NEED TO INSERT OUR ROUTES HERE
-// =============================================================
+// ============================================================================================
 //EXAMPLES:
 // require("./routes/post-api-routes.js")(app);
 // require("./routes/author-api-routes.js")(app);
@@ -47,6 +48,14 @@ app.set("view engine", "handlebars"); // set the engine run root dir.
 
 //this is our strategy
 require("./passport")(passport);
+
+//====================================================
+//added this to show the home page
+//need to discuss how we are going to set up the routes
+require("./controllers/devTinder_controller")(app);
+
+//=========================================================
+
 require("./routes/auth.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);

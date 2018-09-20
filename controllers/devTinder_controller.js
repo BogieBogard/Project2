@@ -1,14 +1,14 @@
-let express = require("express");
-
-let router = express.Router();
 
 
-router.get("/", (req, res) => {
-  console.log("Default Page /");
-  res.render("index");
-});
-router.get("/#", (req, res) => {
-  console.log("LInk");
-});
-
-module.exports = router; // why does this export custom methods too?
+//edited this to get the home page to show up
+//we need to discuss how were going to implement the routes
+//we can change this laterzzzzzz
+module.exports = app => {
+  app.get("/", (req, res) => {
+    console.log("Default Page /");
+    res.render("index");
+  });
+  app.get("/#", (req, res) => {
+    console.log("LInk");
+  });
+};
