@@ -6,6 +6,8 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+const passport = require("passport");
+const path = require("path");
 
 const routes = require("./controllers/devTinder_controller");
 
@@ -26,9 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Static directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use(routes);
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
