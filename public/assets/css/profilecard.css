@@ -1,44 +1,20 @@
-/* #258cd1 */
-
-.navlist {
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
   text-align: center;
 }
-.profileparent {
-  width: 100%;
-  display: table;
-  align-content: center;
-  height: 500px;
-  position: relative;
+
+.title {
+  color: grey;
+  font-size: 18px;
 }
-.sidenav {
-  height: 100vh;
-  width: 20%;
-  background-color: #258cd1;
-  padding: 50px 20px;
-  float: left;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+.rating{
+  padding: 0px 10%;
 }
-.sidenav a {
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  display: block;
-}
-.profilebody {
-  width: 80%;
-  height: 100vh;
-  margin-left: 20%;
-  float: left;
-  overflow-y: scroll;
-  border-color: red;
-  border-width: 1px;
-  border-style: solid;
-}
-.profilebody::-webkit-scrollbar {
-  display: none;
-}
-.dev-profile-content{
-    height: 100vh;
+#rating,
+#viewprofile,
+#addproject{
+    width: 80%;
+    margin: 0px auto 20px;
 }

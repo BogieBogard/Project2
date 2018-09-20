@@ -2,16 +2,17 @@
     <div class="container">
         <div class="login-form">
             <div class="main-div">
+                <div class="switch"><a href="/customerlogin">Not a Developer? Go to Customer-Login</a></div>
                 <div class="panel">
-                    <h2>Member Login</h2>
-                    <p>Please enter your email and password</p>
+                    <h2>Developer Login</h2>
+                    <p>Please enter your username and password</p>
                 </div>
                 <form id="Login">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
+                        <input required type="text" class="form-control" id="inputDevlogin" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <input required type="password" class="form-control" id="inputDevPassword" placeholder="Password">
                     </div>
                     <div>
                         <div class="forgot">
@@ -20,7 +21,7 @@
                         </div>
                         <div class="signup">
                             {{!-- SINGUP HTML ROUTE --}}
-                            <a href="">New user? Signup here!</a>
+                            <a href="/newdeveloper">New Developer? Signup here!</a>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
@@ -28,6 +29,5 @@
             </div>
         </div>
         {{!-- This page will fill the remaining page with gradient color --}}
-        <br><br><br><br>
     </div>
 </div>

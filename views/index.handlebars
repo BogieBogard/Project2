@@ -1,7 +1,42 @@
-{{>MainPage/nav}} <!--Navigation Bar with floating follow-->
+<header id="header" class="alt">
+    <div class="logo"><a href="/">DevTinder <span>by Ricardo Bentin, Juan Varon, Patrick Wang, Spencer Spatson, Marchall
+                T</span></a></div>
+</header>
 
-{{> MainPage/banner}} <!--Body Banner with trans in effect on banner.jpg-->
+<section id="banner">
+    <div class="inner">
+        <header>
+            <h1>DevTinder</h1>
+            <p>Platform to connect customers who need dev support on a project<br />to developers who can work on their projects
+                based on their expertise</p>
+            <p>Who are you??</p>
+        </header>
+        <a href="#developer" class="button big scrolly">A DEVELOPER</a> | <a href="#customer" class="button big scrolly">A
+            CUSTOMER
+        </a>
+    </div>
+</section>
 
-{{> MainPage/body}} <!--Main Body Page: DevTinder Welcome Page, Developer-More Info, Customer-More Info, About DevTinder-->
+<div id="main">
+    <div id="developer">{{> Developer/developerMain}}</div>
+    <div id="customer">{{> Customer/customerMain}}</div>
+    <section class="wrapper style1">
+        <div class="inner">
+            <header class="align-center">
+                <h2>Who created DevTinder...</h2>
+                <p>Cras sagittis turpis sit amet est tempus, sit amet consectetur purus tincidunt.</p>
+            </header>
+            <div class="flex flex-3">
+                {{> MainPage/creator/jVaron}} {{> MainPage/creator/rBentin}} {{> MainPage/creator/pWang}} {{> MainPage/creator/marshallT}}
+                {{> MainPage/creator/sSpatson}}
+            </div>
+        </div>
+    </section>
 
-{{> MainPage/footer}} <!--Footer Body with C.Right image etc-->
+</div>
+
+<footer id="footer">
+    <div class="copyright">
+        <p>&copy; DevTinder. All rights reserved. Design: Ricardo Bentin, Juan Varon, Patrick Wang, Spencer Spatson, MarchallT
+    </div>
+</footer>

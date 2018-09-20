@@ -1,0 +1,22 @@
+#newproject,
+#openproject,
+#completedproject{
+    margin: 10px 0px;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+@media screen and (max-width: 1280px) {
+    .sidenav{
+        display: block;
+    }
+  }
+  @media screen and (max-width: 980px) {
+    .sidenav{
+        display: block;
+    }
+  }
+  @media screen and (max-width: 736px) {
+    .sidenav{
+        display: none;
+    }
+  }

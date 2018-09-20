@@ -10,7 +10,7 @@ div#signupform {
     #acb6e5,
     #74ebd5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  padding: 10vh;
+  padding: 10px;
 }
 .wrapper-div {
   height: 100%;
@@ -21,10 +21,10 @@ div#signupform {
 .form-list {
   width: 470px;
 }
-.switch{
+.switch {
   height: 50px;
 }
-.switch a{
+.switch a {
   color: #777777;
   font-size: 10px;
   text-decoration: underline;
@@ -53,6 +53,7 @@ div#signupform {
   border-radius: 2px;
   margin: 10px auto 30px;
   padding: 40px 10px 10px;
+  max-height: 100%;
 }
 .signup-form .form-list {
   margin-bottom: 10px;
@@ -69,6 +70,46 @@ div#signupform {
   height: 50px;
   line-height: 50px;
   padding: 0;
+}
+.dev-slider {
+  text-align: left;
+  padding: 20px 0px 0px 10%;
+}
+.dev-slider label {
+  width: 15%;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 70%;
+  height: 3px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.6;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin: 5px 0px 20px;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+#slider-instruction{
+  width: 100%;
+  color: lightgrey;
+  text-align: center;
 }
 @media screen and (max-width: 1280px) {
   #inputLast,
@@ -135,39 +176,4 @@ div#signupform {
     margin-right: 0px;
     margin-bottom: 10px;
   }
-}
-.dev-slider{
-  text-align: left;
-  padding: 20px 0px;
-}
-.dev-slider label {
-  width: 15%;
-}
-.slider {
-  -webkit-appearance: none;
-  width: 70%;
-  height: 3px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.6;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  margin: 5px 0px 20px;
-}
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4caf50;
-  cursor: pointer;
-}
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4caf50;
-  cursor: pointer;
 }

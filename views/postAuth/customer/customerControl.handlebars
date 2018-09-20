@@ -1,0 +1,25 @@
+<div class="profileparent">
+    <div class="sidenav">
+        <div class="image round fit">
+            <img src="/assets/img/examplecustomer.jpg" alt="customer photo" />
+        </div>
+        <div class="navlist">
+            <h4>John Smith</h4>
+            <a href="#add-project" class="button alt small fit icon fa-plus">Add Projects</a>
+            <a href="#open-projects" class="button alt small fit icon fa-folder-open">Open Projects</a>
+            <a href="#completed-projects" class="button alt small fit icon fa-briefcase">Completed Projects</a>
+            <a href="#hibernate" class="button alt small fit icon fa-plus">Hibernate</a>
+        </div>
+    </div>
+    <div class="customercontrol-view">
+        <div class="section" id="add-project">
+            {{> Customer/CustomerControlMenu/addproject}}
+        </div>
+        <div class="section" id="open-projects">
+            {{> Customer/CustomerControlMenu/openproject}}
+        </div>
+        <div class="section" id="completed-projects">
+            {{> Customer/CustomerControlMenu/completedproject}}
+        </div>
+    </div>
+</div>

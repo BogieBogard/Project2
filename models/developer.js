@@ -1,6 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Developer = sequelize.define("Developer", {
-    //for testing changing allowNull to true
     name: {
       type: DataTypes.STRING,
       allowNull: true,
