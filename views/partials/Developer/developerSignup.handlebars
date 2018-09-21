@@ -9,7 +9,7 @@
                     <p>Please fill out all required information to begin..</p>
                 </div>
                 <div class="wrapper-div">
-                    <form id="signup">
+                    <form id="developer-signup">
                         <div class="form-list">
                             <input required type="text" class="form-ctrl" id="inputFirst" placeholder="First Name">
                             <input required type="text" class="form-ctrl" id="inputLast" placeholder="Last Name">
@@ -24,10 +24,16 @@
                             <input required type="text" class="form-ctrl" id="inputPassword2" placeholder="Retype Password (Must Match)">
                         </div>
                         <div class="form-list">
+                            <input required type="text" class="form-ctrl" id="inputLocation" placeholder="Where do you live?">
+                        </div>
+                        <div class="form-list">
                             <input required type="text" class="form-ctrl" id="inputPhoto" placeholder="Photo (Must be external URL: https://www.google.com/)">
                         </div>
+                        <div class="form-list">
+                            <input required type="text" class="form-ctrl" id="inputPortfolio" placeholder="Portfolio (Must be external URL: https://www.google.com/)">
+                        </div>
                         {{> Developer/skillslider}}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button id="devSubmit" type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
