@@ -9,8 +9,6 @@ var bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
 
-// const routes = require("./controllers/devTinder_controller");
-
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -52,7 +50,7 @@ require("./passport")(passport);
 //====================================================
 //added this to show the home page
 //need to discuss how we are going to set up the routes
-// require("./controllers/devTinder_controller")(app);
+
 
 //=========================================================
 
@@ -62,7 +60,7 @@ require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
