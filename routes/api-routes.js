@@ -14,7 +14,7 @@ module.exports = app => {
       res.json(result);
     });
   });
-  
+
   //this route creates a developer user
   app.post("/api/developers", (req, res) => {
     //first check the developer database for the user name the user
@@ -58,7 +58,6 @@ module.exports = app => {
                   angular: req.body.angular,
                   react: req.body.react,
                   python: req.body.python
-
                 }).then(result => {
                   console.log("user created");
                   //return true if user was successfully created
@@ -115,11 +114,12 @@ module.exports = app => {
     });
   });
 
-
   //this route creates a new project
-  app.post("/api/project", checkAuth, (req,res) => {
+  app.post("/api/project", (req, res) => {
+    console.log("This is req.body", req.body);
     let projObj = {
       name: req.body.name,
+      description: req.body.description,
       dueDate: req.body.dueDate,
       cost: req.body.cost,
       html: req.body.html,
@@ -131,11 +131,12 @@ module.exports = app => {
       react: req.body.react,
       python: req.body.python,
     };
+    console.log("This is projObj: ", projObj);
     db.Project.create({
       projObj
     }).then(result => {
       console.log("New Project Created");
       res.send(true);
-    })
-  })
+    });
+  });
 };
