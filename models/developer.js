@@ -91,7 +91,7 @@ module.exports = function(sequelize, DataTypes) {
     models.Developer.belongsTo(models.Project, {
       onDelete: "CASCADE",
       foreignKey: {
-        allowNull: false
+        allowNull: true
             }
     });
   };
