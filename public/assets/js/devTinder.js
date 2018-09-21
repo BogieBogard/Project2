@@ -37,9 +37,8 @@ $(() => {
     $.post("/api/developers", developerData, function() {
       console.log("created a user and posted data to db");
     }).then(() => {
-      $.get("/developerlogin", function() {
-        console.log("login plz");
-      });
+      window.location.replace("/developerlogin");
+      console.log("login plz");
     });
   });
 });
