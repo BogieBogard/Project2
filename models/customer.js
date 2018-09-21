@@ -49,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
     models.Customer.hasMany(models.Project, {
       onDelete: "CASCADE",
       foreignKey: {
-        allowNull: false
+        allowNull: true
             }
     });
   };
