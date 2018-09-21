@@ -1,4 +1,26 @@
 $(() => {
+  //This catches the 401 Unauthorized Error from the document
+  $(document).on("ajaxError", (event, xhr) => {
+    if (xhr.status === 401 || xhr.status === 403) {
+      $(".panel").append(`<span id="wronginfo">INCORRECT LOGIN TRY AGAIN</span>`);
+      $("#wronginfo").fadeOut(3000);
+      $(
+        "#inputDevlogin.form-control, #inputDevPassword.form-control, #inputCuslogin.form-control, #inputCusPassword.form-control"
+      ).css({
+        border: "red solid 3px"
+      });
+      setTimeout(() => {
+        $(
+          "#inputDevlogin.form-control, #inputDevPassword.form-control, #inputCuslogin.form-control, #inputCusPassword.form-control"
+        ).css({
+          border: "#d4d4d4 solid 1px",
+          transition: "all .3s ease",
+          outline: "0"
+        });
+      }, 1000);
+    }
+  });
+
   //developer login handling
   $(document).on("click", "#dev-login", function(event) {
     event.preventDefault();
@@ -12,7 +34,7 @@ $(() => {
         .trim()
     };
 
-    console.log(user);
+    // console.log(user);
 
     let token;
     let userId;
@@ -35,12 +57,10 @@ $(() => {
 
       console.log(userId);
 
-    
-
       $.ajax({
         type: "GET",
         url: `/devProfile/${userId}`,
-        headers: {authorization: token},
+        headers: { authorization: token }
       }).then(result => {
         //now we need to figure out how to get the pages to render when the get request is put in
         //auth is working fine, and jwt can be passed in the header as seen above
@@ -78,12 +98,12 @@ $(() => {
       token = `Bearer ${result.token}`;
       //this gets the user id to pass in the get request
       //we can query the DB again on the back end before the page render to get user obj info
-      userId = result.id
+      userId = result.id;
 
       $.ajax({
         type: "GET",
         url: `/customerProfile/${userId}`,
-        headers: {authorization: token},
+        headers: { authorization: token }
       }).then(result => {
         //now we need to figure out how to render the pages once we reach the new route
         //auth works passing the jwt in the header as seen above

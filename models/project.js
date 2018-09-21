@@ -82,7 +82,7 @@ module.exports = function(sequelize, DataTypes) {
     models.Project.belongsTo(models.Customer, {
       onDelete: "CASCADE",
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };

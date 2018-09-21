@@ -106,7 +106,7 @@ div#signupform {
   background: #4caf50;
   cursor: pointer;
 }
-#slider-instruction{
+#slider-instruction {
   width: 100%;
   color: lightgrey;
   text-align: center;
@@ -124,7 +124,9 @@ div#signupform {
   #inputPassword1,
   #inputPassword2,
   #inputPhoto,
-  #signup {
+  #signup,
+  #inputLocation,
+  #inputPortfolio {
     width: 470px;
   }
 }
@@ -141,7 +143,9 @@ div#signupform {
   #inputPassword1,
   #inputPassword2,
   #inputPhoto,
-  #signup {
+  #signup,
+  #inputLocation,
+  #inputPortfolio {
     width: 370px;
   }
 }
@@ -152,7 +156,9 @@ div#signupform {
   #inputPassword1,
   #inputPassword2,
   #inputPhoto,
-  #signup {
+  #signup,
+  #inputLocation,
+  #inputPortfolio {
     width: 270px;
   }
   #inputFirst {
@@ -168,7 +174,9 @@ div#signupform {
   #inputPassword1,
   #inputPassword2,
   #inputPhoto,
-  #signup {
+  #signup,
+  #inputLocation,
+  #inputPortfolio {
     width: 250px;
   }
   #inputFirst {
