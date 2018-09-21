@@ -9,7 +9,7 @@ var bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
 
-const routes = require("./controllers/devTinder_controller");
+// const routes = require("./controllers/devTinder_controller");
 
 // Sets up the Express App
 // =============================================================
@@ -52,7 +52,7 @@ require("./passport")(passport);
 //====================================================
 //added this to show the home page
 //need to discuss how we are going to set up the routes
-require("./controllers/devTinder_controller")(app);
+// require("./controllers/devTinder_controller")(app);
 
 //=========================================================
 
