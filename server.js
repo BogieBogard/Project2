@@ -52,7 +52,7 @@ require("./passport")(passport);
 //====================================================
 //added this to show the home page
 //need to discuss how we are going to set up the routes
-require("./controllers/devTinder_controller")(app);
+// require("./controllers/devTinder_controller")(app);
 
 //=========================================================
 
