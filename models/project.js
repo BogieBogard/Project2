@@ -62,23 +62,29 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
     isComplete: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        default: 0,
-        len: [1]
-      }
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: 0,
+      len: [1]
+    },
+    isAssigned: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: 0,
+      len: [1]
+    }
   });
 
   // Add a belongsTo association to Authors here
   // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
 
-  // Post.associate = function (models) {
-  //   models.Post.belongsTo(models.Author, {
-  //     onDelete: "CASCADE",
-  //     foreignKey: {
-  //       allowNull: false
-  //           }
-  //   });
-  // };
+  Project.associate = function(models) {
+    models.Project.belongsTo(models.Customer, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Project;
 };
