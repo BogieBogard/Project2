@@ -45,13 +45,13 @@ module.exports = function(sequelize, DataTypes) {
   // Add a belongsTo association to Authors here
   // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
 
-  // Post.associate = function (models) {
-  //   models.Post.belongsTo(models.Author, {
-  //     onDelete: "CASCADE",
-  //     foreignKey: {
-  //       allowNull: false
-  //           }
-  //   });
-  // };
+  Customer.associate = function (models) {
+    models.Customer.hasMany(models.Project, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+            }
+    });
+  };
   return Customer;
 };
