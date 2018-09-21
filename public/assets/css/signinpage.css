@@ -11,6 +11,7 @@ div#LoginForm {
     #74ebd5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding: 10vh;
+  height: 100vh;
 }
 .form-heading {
   color: #fff;

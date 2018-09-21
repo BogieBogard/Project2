@@ -1,0 +1,32 @@
+<div class="profileparent">
+    <div class="sidenav">
+        <div class="image round fit">
+            <img src="/assets/img/exampledeveloper.jpg" alt="developer photo" />
+        </div>
+        <div class="navlist">
+            <h4>Laura Davis</h4>
+
+            <a href="#profile-settings" class="button alt small fit icon fa-info-circle">Profile Settings</a>
+            <a href="#open-invites" class="button alt small fit icon fa-inbox">Open Invites</a>
+            <a href="#open-projects" class="button alt small fit icon fa-folder-open">Open Projects</a>
+            <a href="#completed-projects" class="button alt small fit icon fa-briefcase">Completed Projects</a>
+            <a href="#hibernate" class="button alt small fit icon fa-plus">Hibernate</a>
+        </div>
+    </div>
+    <div class="developercontrol-view">
+        <div class="section" id="profile-settings">
+            {{> Developer/DeveloperControlMenu/profilesettings}}
+        </div>
+        <div class="section" id="open-invites">
+            {{> Developer/DeveloperControlMenu/openinvites}}
+        </div>
+        <div class="section" id="open-projects">
+            {{> Developer/DeveloperControlMenu/openprojects}}
+        </div>
+        <div class="section" id="completed-projects">
+            {{> Developer/DeveloperControlMenu/completedprojects}}
+        </div>
+        {{!--
+        <div class="section" id="hibernate">5</div> --}}
+    </div>
+</div>

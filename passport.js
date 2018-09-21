@@ -13,6 +13,10 @@ module.exports = passport => {
     done(null, user);
   });
   passport.use(
+    //username and password are what the user types in
+    //these are gathered in the auth.js routes
+    //when passport.authenticate is called, it invokes our local strategy and
+    //passes it the username password
     new localStrategy(function(username, password, done) {
       console.log({ username, password });
 
@@ -22,7 +26,7 @@ module.exports = passport => {
         }
       }).then(result => {
         if (result) {
-          bcrypt.compare(result.password, hash, (err, res) => {
+          bcrypt.compare(password, result.password, (err, res) => {
             if (err) throw err;
             if (res) {
               return done(null, {
@@ -42,7 +46,7 @@ module.exports = passport => {
             }
           }).then(result => {
             if (result) {
-              bcrypt.compare(result.password, hash, (err, res) => {
+              bcrypt.compare(password, result.password, (err, res) => {
                 if (err) throw err;
                 if (res) {
                   return done(null, {

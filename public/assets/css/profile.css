@@ -1,0 +1,264 @@
+.navlist {
+  text-align: center;
+}
+.profileparent {
+  width: 100%;
+  display: table;
+  align-content: center;
+  height: 500px;
+  position: relative;
+}
+.sidenav {
+  height: 100vh;
+  width: 20%;
+  background-color: #258cd1;
+  padding: 50px 20px;
+  float: left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.sidenav a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+}
+.profilebody {
+  width: 80%;
+  min-height: 100vh;
+  height: 100%;
+  margin-left: 20%;
+  padding: 50px;
+  float: left;
+  overflow-y: scroll;
+}
+.profilebody::-webkit-scrollbar {
+  display: none;
+}
+div#about.dev-profile-content {
+  background-color: rgb(243, 242, 242);
+}
+.dev-profile-content {
+  display: table;
+  padding: 50px 20px;
+}
+div#experience {
+  width: 100%;
+}
+
+/* Circular Graph for Prof on coding languages */
+.flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.single-chart {
+  width: 20%;
+  font-size: 8px;
+}
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+.circular-chart.orange .circle {
+  stroke: #ff9f00;
+}
+.circular-chart.green .circle {
+  stroke: #4cc790;
+}
+.circular-chart.blue .circle {
+  stroke: #3c9ee5;
+}
+.circular-chart.red .circle {
+  stroke: #bd2323;
+}
+.circular-chart.lightblue .circle {
+  stroke: #8dbfe2;
+}
+.circular-chart.yellow .circle {
+  stroke: yellow;
+}
+.circular-chart.babyblue .circle {
+  stroke: lightblue;
+}
+.percentage {
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+div#contrabution.dev-profile-content button {
+  width: 20%;
+  margin: 5px 20px;
+  background-color: #3498db;
+  border-color: #3498db;
+}
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+#content-header-tag {
+  text-align: center;
+  color: #999999;
+  padding: 0px;
+  margin: 0px;
+}
+#newproject,
+#openproject,
+#completedproject {
+  margin: 10px 0px;
+  background: rgba(76, 175, 80, 0.1);
+}
+.developercontrol-view,
+.customercontrol-view {
+  margin-left: 20%;
+  max-height: 100vh;
+  overflow: scroll;
+}
+div.section {
+  height: 100vh;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  /* border-color:red;
+  border-style: solid;
+  border-width: 1px; */
+}
+div.section#add-project {
+  height: 10%;
+}
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
+#profile-update {
+  width: 100%;
+  height: 100%;
+  padding: 50px 10% 10px 10%;
+  background-color: #eeeeee;
+}
+.devcontrol {
+  background-color: #e6e4e44f;
+}
+#profile-update button.btn.btn-primary {
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+/* main table */
+table th {
+  text-align: center;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-style: solid;
+  border-width: 1px;
+  vertical-align: middle;
+}
+table th span {
+  color: #999999;
+  font-size: 0.7em;
+}
+/* Customer Add Project Table */
+table th.customer-add-project-description {
+  width: 74%;
+}
+table th.customer-add-project-due-date,
+table th.add-project-spacer {
+  width: 13%;
+}
+/* Customer Open Project Table */
+table th.customer-open-project-description {
+  width: 40%;
+}
+table th.customer-open-project-id,
+table th.customer-open-project-add-developer,
+table th.customer-open-project-number-developer,
+table th.customer-open-project-due-date {
+  width: 15%;
+}
+/*  Customer Completed Project Table */
+table th.customer-completed-project-description {
+  width: 40%;
+}
+table th.customer-open-project-id,
+table th.customer-open-project-add-developer,
+table th.customer-open-project-number-developer,
+table th.customer-open-project-due-date {
+  width: 15%;
+}
+
+/* Media Query for Dynamic Page */
+@media screen and (max-width: 1280px) {
+  .sidenav {
+    display: block;
+  }
+  .dev-profile-content {
+    display: table;
+    padding: 20px 20px;
+    width: 100%;
+  }
+  div#contrabution.dev-profile-content button {
+    width: 30%;
+    margin: 10px 1.5%;
+  }
+}
+@media screen and (max-width: 980px) {
+  .sidenav {
+    display: block;
+  }
+  .dev-profile-content {
+    display: table;
+    padding: 20px 20px;
+  }
+  div#contrabution.dev-profile-content button {
+    width: 42%;
+    margin: 10px 4%;
+  }
+}
+@media screen and (max-width: 736px) {
+  .sidenav {
+    display: none;
+  }
+  .developercontrol-view,
+  .customercontrol-view {
+    margin-left: 0%;
+  }
+  .profilebody {
+    margin-left: 0px;
+    width: 100%;
+  }
+  .dev-profile-content {
+    display: table;
+    padding: 20px 20px;
+  }
+  div#contrabution.dev-profile-content button {
+    width: 100%;
+    margin: 10px 0px;
+  }
+}

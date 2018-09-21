@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Developer = sequelize.define("Developer", {
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1]
       }
@@ -23,57 +23,57 @@ module.exports = function(sequelize, DataTypes) {
     },
     location: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     photo: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     portfolio: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     html: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     css: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     javascript: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     java: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     nodeJS: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     angular: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     react: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     python: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       len: [1]
     },
     avgRating: {
