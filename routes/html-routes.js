@@ -48,8 +48,9 @@ module.exports = app => {
     console.log("Developer Card");
     res.render("postAuth/Developer/developerProfilecard");
   });
-
-  app.get("/3", (req, res) => {
+  
+  //developer's profile page
+  app.get("/devProfile/:id", (req, res) => {
     console.log("Developer Control");
     res.render("postAuth/Developer/developerControl");
   });
