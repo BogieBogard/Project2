@@ -117,7 +117,8 @@ module.exports = app => {
   //this route creates a new project
   app.post("/api/project", (req, res) => {
     console.log("This is req.body", req.body);
-    let projObj = {
+
+    db.Project.create({
       name: req.body.name,
       description: req.body.description,
       dueDate: req.body.dueDate,
@@ -129,14 +130,14 @@ module.exports = app => {
       nodeJS: req.body.nodeJS,
       angular: req.body.angular,
       react: req.body.react,
-      python: req.body.python,
-    };
-    console.log("This is projObj: ", projObj);
-    db.Project.create({
-      projObj
-    }).then(result => {
-      console.log("New Project Created");
-      res.send(true);
-    });
+      python: req.body.python
+    })
+      .then(result => {
+        console.log("New Project Created");
+        res.send(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
 };

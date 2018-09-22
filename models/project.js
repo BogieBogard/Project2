@@ -1,51 +1,97 @@
 module.exports = function(sequelize, DataTypes) {
   var Project = sequelize.define("Project", {
     name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     description: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     dueDate: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     cost: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     html: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     css: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     javascript: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     java: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     nodeJS: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     angular: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     react: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     python: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     isComplete: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
-      default: 0,
+      type: DataTypes.STRING,
+      defaultValue: false,
       len: [1]
     },
     isAssigned: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
-      default: 0,
+      defaultValue: false,
       len: [1]
     }
   });

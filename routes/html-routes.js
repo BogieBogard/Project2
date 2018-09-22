@@ -32,7 +32,7 @@ module.exports = app => {
   app.get("/devProfile/:id", checkAuth, (req, res) => {
     console.log("made it to the profile pages");
     console.log("Developer Control");
-    res.render("postAuth/Developer/developerControl");
+    return res.status(200).send("youre in");
   });
 
   //what the customer sees after logging in
@@ -60,13 +60,13 @@ module.exports = app => {
   });
 
   //what is this?
-  app.get("/1", (req, res) => {
-    console.log("Developer Profile");
-    res.render("postAuth/Developer/developerProfile");
-  });
+  // app.get("/1", (req, res) => {
+  //   console.log("Developer Profile");
+  //   res.render("postAuth/Developer/developerProfile");
+  // });
 
-  app.get("/2", (req, res) => {
-    console.log("Developer Card");
-    res.render("postAuth/Developer/developerProfilecard");
-  });
+  // app.get("/2", (req, res) => {
+  //   console.log("Developer Card");
+  //   res.render("postAuth/Developer/developerProfilecard");
+  // });
 };
