@@ -2,6 +2,7 @@ const db = require("../models");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
+
 module.exports = app => {
   let devId;
   let custId;
@@ -14,7 +15,8 @@ module.exports = app => {
         return next(err);
       }
       if (!user) {
-        return res.status(401).json({ user });
+        //auth fails
+        return res.status(401).json(false);
       }
       req.logIn(user, function(err) {
         if (err) {
@@ -34,9 +36,9 @@ module.exports = app => {
           //the user can exist, but it will not exist in the customer db, thus if the result
           //of the query is null, we return a 401
           if (result === null) {
-            return res.status(401).json({ message: "Auth failed" });
+            //auth fails
+            return res.status(401).json(false);
           }
-
           devId = result.dataValues.id;
           console.log(devId);
           const token = jwt.sign(
@@ -44,9 +46,7 @@ module.exports = app => {
             "da_secret",
             { expiresIn: "24h" }
           );
-          return res.status(200).json({
-            token: token,
-            expiresIn: 86400,
+          return res.status(200).cookie("jswt",`Bearer ${token}`,{maxAge:60*60*24}).json({
             id: devId
           });
         });
@@ -61,7 +61,8 @@ module.exports = app => {
         return next(err);
       }
       if (!user) {
-        return res.status(401).json({ user });
+        //auth fails
+        return res.status(401).json(false);
       }
       req.logIn(user, function(err) {
         if (err) {
@@ -83,7 +84,8 @@ module.exports = app => {
           //the user can exist, but it will not exist in the customer db, thus if the result
           //of the query is null, we return a 401
           if (result === null) {
-            return res.status(401).json({ message: "Auth failed" });
+            //auth fails
+            return res.status(401).json(false);
           }
           custId = result.dataValues.id;
           console.log(custId);
@@ -92,9 +94,7 @@ module.exports = app => {
             "da_secret",
             { expiresIn: "24h" }
           );
-          return res.status(200).json({
-            token: token,
-            expiresIn: 86400,
+          return res.status(200).cookie("jwt", token, {maxAge: 60*60*24}).json({
             id: custId
           });
         });

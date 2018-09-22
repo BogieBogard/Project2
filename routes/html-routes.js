@@ -1,5 +1,6 @@
 const path = require("path");
 const checkAuth = require("../check-auth.js");
+const db = require("../models");
 
 module.exports = app => {
   //for the profiles, we need to include either the user ID or some other form of identifying them
@@ -29,10 +30,24 @@ module.exports = app => {
   });
 
   //what the developer sees after logging in
-  app.get("/devProfile/:id", checkAuth, (req, res) => {
-    console.log("made it to the profile pages");
-    console.log("Developer Control");
-    return res.status(200).send("youre in");
+
+  app.get("/devProfile/:id", checkAuth, (req,res) => {
+      console.log('made it to the profile pages');
+      console.log("Developer Control");
+
+      console.log(req.cookies);
+      //we have to get the object
+      let userOb;
+      db.Developer.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then(result, err => {
+        if(err) throw err;
+        userOb = result.dataValues;
+        res.render("postAuth/developer/developerControl", userOb);
+      })
+
   });
 
   //what the customer sees after logging in

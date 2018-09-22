@@ -8,6 +8,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+
 
 // Sets up the Express App
 // =============================================================
@@ -24,6 +26,12 @@ var db = require("./models");
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
+//implement cookie parser
+app.use(cookieParser());
+//express sessions
+//secret is the key the program uses to decifer the information in the cookie
+//saveUninitialized lets yout save a session in a DB and if the server crashes, and the session exists, the user will not be logged off
+
 
 // Static directory
 app.use(express.static(path.join(__dirname, "public")));
