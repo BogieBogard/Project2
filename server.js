@@ -14,7 +14,7 @@ const cookieParser = require("cookie-parser");
 // Sets up the Express App
 // =============================================================
 var app = express();
-const exphbs = require('express-handlebars');
+const exphbs = require("express-handlebars");
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
@@ -42,7 +42,7 @@ app.use(passport.session());
 
 // app.use(routes);
 //=============================================================================================
-app.engine("handlebars", exphbs({ defaultLayout: "main"})); // set the main html page load out.
+app.engine("handlebars", exphbs({ defaultLayout: "main" })); // set the main html page load out.
 app.set("view engine", "handlebars"); // set the engine run root dir.
 
 // Routes - NEED TO INSERT OUR ROUTES HERE
@@ -59,7 +59,6 @@ require("./passport")(passport);
 //added this to show the home page
 //need to discuss how we are going to set up the routes
 
-
 //=========================================================
 
 require("./routes/auth.js")(app);
@@ -68,7 +67,7 @@ require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

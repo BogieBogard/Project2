@@ -41,4 +41,81 @@ $(() => {
       console.log("login plz");
     });
   });
+  $("#customerSubmit").on("click", function(event) {
+    event.preventDefault();
+    let customerData = {
+      name: `${$("#inputFirst")
+        .val()
+        .trim()} ${$("#inputLast")
+        .val()
+        .trim()}`,
+      username: $("#inputUsername")
+        .val()
+        .trim(),
+      password: $("#inputPassword1")
+        .val()
+        .trim(),
+      location: $("#inputLocation")
+        .val()
+        .trim(),
+      photo: $("#inputPhoto")
+        .val()
+        .trim()
+    };
+    console.log(customerData);
+
+    $.post("/api/customers", customerData, function() {
+      console.log("created a customer and posted data to db");
+    }).then(() => {
+      window.location.replace("/customerlogin");
+      console.log("login plz");
+    });
+  });
+
+  $("#addProject").on("click", function(event) {
+    event.preventDefault();
+    let projectData = {
+      name: $("#projectName")
+        .val()
+        .trim(),
+      description: $("#projectDes")
+        .val()
+        .trim(),
+      dueDate: $("#projectDue")
+        .val()
+        .trim(),
+      cost: $("#projectCost")
+        .val()
+        .trim(),
+      html: $("#projectHTML")
+        .val()
+        .trim(),
+      css: $("#projectCSS")
+        .val()
+        .trim(),
+      javascript: $("#projectJS")
+        .val()
+        .trim(),
+      java: $("#projectJava")
+        .val()
+        .trim(),
+      nodeJS: $("#projectNodeJS")
+        .val()
+        .trim(),
+      angular: $("#projectAngular")
+        .val()
+        .trim(),
+      react: $("#projectReact")
+        .val()
+        .trim(),
+      python: $("#projectPython")
+        .val()
+        .trim()
+    };
+    console.log("This is Project Data: ", projectData);
+
+    $.post("/api/project", projectData, function() {
+      console.log("created a project and posted data to db");
+    });
+  });
 });
