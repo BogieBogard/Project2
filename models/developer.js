@@ -88,8 +88,7 @@ module.exports = function(sequelize, DataTypes) {
   // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
 
   Developer.associate = function (models) {
-    models.Developer.belongsTo(models.Project, {
-      onDelete: "CASCADE",
+    models.Developer.hasMany(models.Project, {
       foreignKey: {
         allowNull: true
             }
