@@ -75,10 +75,10 @@ module.exports = app => {
   });
 
   //what is this?
-  // app.get("/1", (req, res) => {
-  //   console.log("Developer Profile");
-  //   res.render("postAuth/Developer/developerProfile");
-  // });
+  app.get("/1", (req, res) => {
+    console.log("Developer Profile");
+    res.render("postAuth/Customer/customerProfile");
+  });
 
   // app.get("/2", (req, res) => {
   //   console.log("Developer Card");

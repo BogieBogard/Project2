@@ -1,5 +1,7 @@
 $(() => {
   console.log("devTinder.js Loaded");
+
+  // developer signup page submit button
   $("#devSubmit").on("click", function(event) {
     event.preventDefault();
     let developerData = {
@@ -41,6 +43,8 @@ $(() => {
       console.log("login plz");
     });
   });
+
+  //customer signup page button
   $("#customerSubmit").on("click", function(event) {
     event.preventDefault();
     let customerData = {
@@ -118,4 +122,7 @@ $(() => {
       console.log("created a project and posted data to db");
     });
   });
+
+  //customer and developer dynamic scroll button
+  $("#customer-scroll-add-project").scrollTo("#add-project")
 });
