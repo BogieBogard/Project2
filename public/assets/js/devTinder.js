@@ -124,5 +124,5 @@ $(() => {
   });
 
   //customer and developer dynamic scroll button
-  $("#customer-scroll-add-project").scrollTo("#add-project")
+  // $("#customer-scroll-add-project").scrollTo("#add-project")
 });
