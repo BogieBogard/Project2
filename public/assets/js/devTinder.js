@@ -123,6 +123,23 @@ $(() => {
     });
   });
 
-  //customer and developer dynamic scroll button
-  // $("#customer-scroll-add-project").scrollTo("#add-project")
+  //Developer Update Profiel Button
+  $("#profile-update").on("submit", () => {
+    event.preventDefault();
+    console.log("Developer Profile Update Clicked");
+    let DevUpdate = {
+      html: $("#html").text(),
+      css: $("#css").text(),
+      javascript: $("#javascript").text(),
+      java: $("#javascript").text(),
+      nodeJS: $("#nodejs").text(),
+      angular: $("#angular").text(),
+      react: $("#react").text(),
+      python: $("#python").text()
+    };
+    console.log(DevUpdate);
+    $.post("/api/developer/profileupdate", DevUpdate, () => {
+      console.log("Changed Developer Profile Settings");
+    });
+  });
 });
