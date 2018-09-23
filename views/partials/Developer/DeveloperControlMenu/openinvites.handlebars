@@ -11,11 +11,11 @@
             </tr>
         </thead>
         <tbody>
-            {{#foreach project}}
+            {{#each project}}
             <tr>
-                <td>Item 1</td>
-                <td>Ante turpis integer aliquet porttitor.</td>
-                <td>2019-05-14</td>
+                <td>{{project.id}}</td>
+                <td>{{project.description}}</td>
+                <td>{{project.duedate}}</td>
                 <td><a href="" class="button alt small fit icon fa-info-circle">View Project</a></td>
                 <td><a href="" class="button fit small icon fa-check">Accept Request</a></td>
             </tr>
