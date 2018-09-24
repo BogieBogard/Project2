@@ -21,7 +21,6 @@ module.exports = app => {
   app.get("/allpagedisplay", (req, res) => {
     console.log("Front End All Page Test Call");
     res.render("layouts/allpageload");
-  });
 
   // developer login -- forget password -- Signup
   app.get("/developerlogin", (req, res) => {
@@ -109,10 +108,10 @@ module.exports = app => {
   });
 
   //what is this?
-  // app.get("/1", (req, res) => {
-  //   console.log("Developer Profile");
-  //   res.render("postAuth/Developer/developerProfile");
-  // });
+  app.get("/1", (req, res) => {
+    console.log("Developer Profile");
+    res.render("postAuth/Customer/customerControl");
+  });
 
   // app.get("/2", (req, res) => {
   //   console.log("Developer Card");
