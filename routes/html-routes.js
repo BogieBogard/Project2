@@ -7,49 +7,25 @@ module.exports = app => {
   //this will ensure that the correct information gets generated for the server side rendering
   //IE correct picture, projects etc.
 
-  app.get("/customerlogin", (req, res) => {
-    console.log("Customer Main Page");
-    res.render("partials/Customer/customerlogin");
-  });
-
   // Main/Index Page
   app.get("/", (req, res) => {
     console.log("Index Main Page");
     res.render("index");
   });
 
+  app.get("/customerlogin", (req, res) => {
+    console.log("Customer Main Page");
+    res.render("partials/Customer/customerlogin");
+  });
+
+  app.get("/allpagedisplay", (req, res) => {
+    console.log("Front End All Page Test Call");
+    res.render("layouts/allpageload");
+
   // developer login -- forget password -- Signup
   app.get("/developerlogin", (req, res) => {
     console.log("Developer Main Page");
     res.render("partials/Developer/developerlogin");
-  });
-
-  //what the developer sees after logging in
-
-  app.get("/devProfile/:id", checkAuth, (req,res) => {
-      console.log('made it to the profile pages');
-      console.log("Developer Control");
-
-      console.log(req.cookies);
-      //we have to get the object
-      let userOb;
-      db.Developer.findOne({
-        where: {
-          id: req.params.id
-        }
-      }).then(result, err => {
-        if(err) throw err;
-        userOb = result.dataValues;
-        res.render("postAuth/developer/developerControl", userOb);
-      })
-
-  });
-
-  //what the customer sees after logging in
-  app.get("/customerProfile/:id", checkAuth, (req, res) => {
-    console.log("made it to the cust profile page");
-    console.log("Customer Control");
-    res.render("postAuth/Customer/customerControl");
   });
 
   // developer login > Signup
@@ -64,9 +40,71 @@ module.exports = app => {
     res.render("partials/Customer/customerSignup");
   });
   //route to add a new project
-  app.get("/newproject", (req, res) => {
+  app.get("/newproject", checkAuth, (req, res) => {
     console.log("Create a Project Section");
     res.render("partials/Customer/CustomerControlMenu/addproject");
+  });
+
+  //what the developer sees after logging in
+
+  app.get("/devProfile/:id", checkAuth, (req, res) => {
+    console.log("made it to the profile pages");
+    console.log("Developer Control");
+
+    console.log(req.cookies);
+    //we have to get the object from the developer database
+    let userOb;
+    let projArr = [];
+    db.Developer.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then((result, err) => {
+        if (err) throw err;
+        userOb = result.dataValues;
+        //now we have to get all of the project objects from
+        //the projects table
+      })
+      .then(() => {
+        db.Project.findAll({
+          where: {
+            DeveloperId: req.params.id
+          }
+        })
+          .then(result => {
+            
+            
+            result.map(x => {
+              console.log(x.dataValues);
+              projArr.push(x.dataValues);
+              
+            });
+
+            console.log(projArr);
+            //placing the entirity of the project object that was returned
+            //in the userOb under the project key
+            //need to store the project id somewhere we can access it in order to make changes to the accepted
+            //and done status
+            userOb.project = projArr;
+            console.log(userOb);
+            //res.render("postAuth/developer/developerControl", userOb);
+            res.render("postAuth/developer/developerControl");
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  //what the customer sees after logging in
+  app.get("/customerProfile/:id", checkAuth, (req, res) => {
+    console.log("made it to the cust profile page");
+    console.log("Customer Control");
+    res.render("postAuth/Customer/customerControl");
   });
 
   //what is this?
