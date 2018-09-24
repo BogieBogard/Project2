@@ -10,7 +10,6 @@ const passport = require("passport");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
-
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -31,7 +30,6 @@ app.use(cookieParser());
 //express sessions
 //secret is the key the program uses to decifer the information in the cookie
 //saveUninitialized lets yout save a session in a DB and if the server crashes, and the session exists, the user will not be logged off
-
 
 // Static directory
 app.use(express.static(path.join(__dirname, "public")));
@@ -67,7 +65,7 @@ require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

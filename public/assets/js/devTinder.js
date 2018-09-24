@@ -94,7 +94,8 @@ $(() => {
       nodeJS: $("#projectNodeJS").text(),
       angular: $("#projectAngular").text(),
       react: $("#projectReact").text(),
-      python: $("#projectPython").text()
+      python: $("#projectPython").text(),
+      CustomerId: (window.location.pathname.slice(17))
     };
     console.log("This is Project Data: ", projectData);
 
