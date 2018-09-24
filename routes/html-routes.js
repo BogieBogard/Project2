@@ -12,11 +12,6 @@ module.exports = app => {
     res.render("partials/Customer/customerlogin");
   });
 
-  app.get("/allpagedisplay", (req, res) => {
-    console.log("Front End All Page Test Call");
-    res.render("layouts/allpageload");
-  });
-
   // Main/Index Page
   app.get("/", (req, res) => {
     console.log("Index Main Page");
@@ -75,10 +70,10 @@ module.exports = app => {
   });
 
   //what is this?
-  // app.get("/1", (req, res) => {
-  //   console.log("Developer Profile");
-  //   res.render("postAuth/Developer/developerProfile");
-  // });
+  app.get("/1", (req, res) => {
+    console.log("Developer Profile");
+    res.render("postAuth/Customer/customerControl");
+  });
 
   // app.get("/2", (req, res) => {
   //   console.log("Developer Card");

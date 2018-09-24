@@ -146,9 +146,10 @@ div.section {
   border-style: solid;
   border-width: 1px; */
 }
-div.section#add-project {
+/* Change Customer Control Add Project Section ONLY Rest sections is changed by .section controller */
+/* div.section#add-project {
   height: 10%;
-}
+} */
 ::-webkit-scrollbar {
   width: 0px; /* remove scrollbar space */
   background: transparent; /* optional: just make scrollbar invisible */
@@ -186,11 +187,13 @@ table th span {
 }
 /* Customer Add Project Table */
 table th.customer-add-project-description {
-
+width: 50%
 }
 table th.customer-add-project-due-date,
-table th.add-project-spacer {
-  width: 13%;
+table th.customer-add-project-cost,
+table th.add-project-spacer,
+table th.add-project-name {
+  width: 12.5%;
 }
 /* Customer Open Project Table */
 table th.customer-open-project-description {
