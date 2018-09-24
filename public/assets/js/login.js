@@ -2,7 +2,9 @@ $(() => {
   //This catches the 401 Unauthorized Error from the document
   $(document).on("ajaxError", (event, xhr) => {
     if (xhr.status === 401 || xhr.status === 403) {
-      $(".panel").append(`<span id="wronginfo">INCORRECT LOGIN TRY AGAIN</span>`);
+      $(".panel").append(
+        `<span id="wronginfo">INCORRECT LOGIN TRY AGAIN</span>`
+      );
       $("#wronginfo").fadeOut(3000);
       $(
         "#inputDevlogin.form-control, #inputDevPassword.form-control, #inputCuslogin.form-control, #inputCusPassword.form-control"
@@ -55,7 +57,6 @@ $(() => {
       console.log(userId);
 
       window.location.href = `/devProfile/${userId}`;
-
     });
   });
 
@@ -90,9 +91,7 @@ $(() => {
       //this gets the user id to pass in the get request
       //we can query the DB again on the back end before the page render to get user obj info
       userId = result.id;
-
       window.location.href = `/customerProfile/${userId}`;
-
     });
   });
 });

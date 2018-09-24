@@ -68,10 +68,9 @@ $(() => {
       console.log("created a customer and posted data to db");
     }).then(() => {
       window.location.replace("/customerlogin");
-      console.log("login plz");
+      console.log("login please");
     });
   });
-
   $("#addProject").on("click", function(event) {
     event.preventDefault();
     let projectData = {
@@ -95,7 +94,7 @@ $(() => {
       angular: $("#projectAngular").text(),
       react: $("#projectReact").text(),
       python: $("#projectPython").text(),
-      CustomerId: (window.location.pathname.slice(17))
+      CustomerId: window.location.pathname.slice(17)
     };
     console.log("This is Project Data: ", projectData);
 
@@ -103,4 +102,5 @@ $(() => {
       console.log("created a project and posted data to db");
     });
   });
+ 
 });

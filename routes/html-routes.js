@@ -21,6 +21,7 @@ module.exports = app => {
   app.get("/allpagedisplay", (req, res) => {
     console.log("Front End All Page Test Call");
     res.render("layouts/allpageload");
+  });
 
   // developer login -- forget password -- Signup
   app.get("/developerlogin", (req, res) => {
@@ -73,12 +74,9 @@ module.exports = app => {
           }
         })
           .then(result => {
-            
-            
             result.map(x => {
               console.log(x.dataValues);
               projArr.push(x.dataValues);
-              
             });
 
             console.log(projArr);
@@ -104,8 +102,18 @@ module.exports = app => {
   app.get("/customerProfile/:id", checkAuth, (req, res) => {
     console.log("made it to the cust profile page");
     console.log("Customer Control");
-    res.render("postAuth/Customer/customerControl");
-  });
+    let customerData;
+    db.Customer.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((result, err) => {
+      if (err) throw err;
+      customerData = result.dataValues;
+      console.log("this is customer data", customerData);
+      res.render("postAuth/Customer/customerControl", customerData);
+    });
+  }); 
 
   //what is this?
   app.get("/1", (req, res) => {

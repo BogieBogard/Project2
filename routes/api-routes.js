@@ -117,7 +117,6 @@ module.exports = app => {
   //this route creates a new project
   app.post("/api/project", (req, res) => {
     console.log("This is req.body", req.body);
-    console.log("This is req.params", req.params);
 
     db.Project.create({
       name: req.body.name,
