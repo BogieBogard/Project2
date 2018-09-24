@@ -21,7 +21,7 @@ module.exports = app => {
   app.get("/allpagedisplay", (req, res) => {
     console.log("Front End All Page Test Call");
     res.render("layouts/allpageload");
-
+  });
   // developer login -- forget password -- Signup
   app.get("/developerlogin", (req, res) => {
     console.log("Developer Main Page");
@@ -73,12 +73,9 @@ module.exports = app => {
           }
         })
           .then(result => {
-            
-            
             result.map(x => {
               console.log(x.dataValues);
               projArr.push(x.dataValues);
-              
             });
 
             console.log(projArr);
