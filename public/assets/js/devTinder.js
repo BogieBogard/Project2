@@ -87,30 +87,14 @@ $(() => {
       cost: $("#projectCost")
         .val()
         .trim(),
-      html: $("#projectHTML")
-        .val()
-        .trim(),
-      css: $("#projectCSS")
-        .val()
-        .trim(),
-      javascript: $("#projectJS")
-        .val()
-        .trim(),
-      java: $("#projectJava")
-        .val()
-        .trim(),
-      nodeJS: $("#projectNodeJS")
-        .val()
-        .trim(),
-      angular: $("#projectAngular")
-        .val()
-        .trim(),
-      react: $("#projectReact")
-        .val()
-        .trim(),
-      python: $("#projectPython")
-        .val()
-        .trim()
+      html: $("#projectHTML").text(),
+      css: $("#projectCSS").text(),
+      javascript: $("#projectJavascript").text(),
+      java: $("#projectJava").text(),
+      nodeJS: $("#projectNodeJS").text(),
+      angular: $("#projectAngular").text(),
+      react: $("#projectReact").text(),
+      python: $("#projectPython").text()
     };
     console.log("This is Project Data: ", projectData);
 
