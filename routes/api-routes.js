@@ -117,6 +117,7 @@ module.exports = app => {
   //this route creates a new project
   app.post("/api/project", (req, res) => {
     console.log("This is req.body", req.body);
+    console.log("This is req.params", req.params);
 
     db.Project.create({
       name: req.body.name,
@@ -130,11 +131,65 @@ module.exports = app => {
       nodeJS: req.body.nodeJS,
       angular: req.body.angular,
       react: req.body.react,
-      python: req.body.python
+      python: req.body.python,
+      CustomerId: req.body.CustomerId
     })
       .then(result => {
         console.log("New Project Created");
         res.send(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  //route to hit when developer wants to update their profile
+  app.post("/api/developer/:id", checkAuth, (req, res) => {
+    //assuming the request body is an object with all of the fields that need to be updated
+    //I need to send an entirely new object with ALL of the new values
+    //hitting update would need to send the post request and then
+    //set window.location.href = to the deveprofile page so the get request can be sent again
+    //and the page can be updated
+    db.Developer.update(
+      {
+        html: req.body.html,
+        css: req.body.css,
+        javascript: req.body.javascript,
+        java: req.body.java,
+        nodeJS: req.body.nodeJS,
+        angular: req.body.angular,
+        react: req.body.react,
+        python: req.body.python
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("user was updated");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  //route hit when the developer accepts a project
+  app.put("/api/project/developer/:id", checkAuth, (req, res) => {
+    db.Project.update(
+      {
+        isAssigned: 1
+      },
+      {
+        where: {
+          //assuming PROJECT ID will be passed in the URL
+          id: req.params.id
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("project was accepted");
       })
       .catch(err => {
         console.log(err);
