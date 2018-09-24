@@ -103,6 +103,7 @@ module.exports = app => {
     console.log("made it to the cust profile page");
     console.log("Customer Control");
     let customerData;
+    let projectArr = [];
     db.Customer.findOne({
       where: {
         id: req.params.id
@@ -110,10 +111,25 @@ module.exports = app => {
     }).then((result, err) => {
       if (err) throw err;
       customerData = result.dataValues;
-      console.log("this is customer data", customerData);
+      console.log("This is CustomerId: ", req.params.id);
+      db.Project.findAll({
+        where: {
+          CustomerId: req.params.id
+        }
+      }).then(result => {
+        result.map(x => {
+          console.log(x.dataValues);
+          projectArr.push(x.dataValues);
+        });
+        console.log("This is projectArr ", projectArr);
+        customerData.project = projectArr;
+        console.log("this is customer data", customerData);
+        // console.log("this is customerdata.project ", customerData.project);
+        // console.log("this is projectData", projectData);
+      });
       res.render("postAuth/Customer/customerControl", customerData);
     });
-  }); 
+  });
 
   //what is this?
   app.get("/1", (req, res) => {
