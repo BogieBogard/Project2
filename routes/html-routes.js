@@ -123,12 +123,14 @@ module.exports = app => {
         });
         console.log("This is projectArr ", projectArr);
         customerData.project = projectArr;
-        console.log("this is customer data", customerData);
+        // console.log("this is customer data", customerData);
         // console.log("this is customerdata.project ", customerData.project);
         // console.log("this is projectData", projectData);
+        res.render("postAuth/Customer/customerControl", customerData);
       });
-      res.render("postAuth/Customer/customerControl", customerData);
+     
     });
+  
   });
 
   //what is this?
