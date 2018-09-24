@@ -62,6 +62,7 @@ module.exports = app => {
       }
       if (!user) {
         //auth fails
+        console.log("failing here");
         return res.status(401).json(false);
       }
       req.logIn(user, function(err) {
@@ -85,6 +86,7 @@ module.exports = app => {
           //of the query is null, we return a 401
           if (result === null) {
             //auth fails
+            console.log("Failing here");
             return res.status(401).json(false);
           }
           custId = result.dataValues.id;
@@ -94,7 +96,7 @@ module.exports = app => {
             "da_secret",
             { expiresIn: "24h" }
           );
-          return res.status(200).cookie("jwt", token, {maxAge: 60*60*24}).json({
+          return res.status(200).cookie("jswt",`Bearer ${token}`, {maxAge: 60*60*24}).json({
             id: custId
           });
         });
