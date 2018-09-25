@@ -1,11 +1,36 @@
 <div class="profileparent">
-    <div class="hover_bkgr_fricc">
+    {{#each project}}
+    <div class="hover_bkgr_fricc" id="{{id}}">
         <span class="helper"></span>
-        <div>
+        <div class="detailbody">
             <div class="popupCloseButton icon fa-times"></div>
-            <p id="headerpage"><div>1</div><div>2</div></p>
+            <p>Project Id: {{id}}</p>
+            <p>{{description}}</p>
+            <span style="font-size: 2em; color: gray">
+                <i class="fab fa-angular"></i>
+                <i class="fab fa-css3-alt"></i>
+                <i class="fab fa-html5"></i>
+                <i class="fab fa-java"></i>
+                <i class="fab fa-js-square"></i>
+                <i class="fab fa-node-js"></i>
+                <i class="fab fa-python"></i>
+                <i class="fab fa-react"></i>
+            </span>
+            </br>
+            <span style="font-size: 1em; color: gray">
+                <i>{{angular}}</i>
+                <i>{{css}}</i>
+                <i>{{html}}</i>
+                <i>{{java}}</i>
+                <i>{{javascript}}</i>
+                <i>{{nodeJS}}</i>
+                <i>{{python}}</i>
+                <i>{{react}}</i>
+            </span>
+
         </div>
     </div>
+    {{/each}}
     <div class="sidenav">
         <div class="image round fit">
             <img src="{{photo}}" alt="developer photo" />
