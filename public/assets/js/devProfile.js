@@ -23,7 +23,7 @@ $(() => {
       type: "PUT",
       url: `/api/developer/${devId}`,
       data: devObj,
-      datatype: "obj",
+      // datatype: "obj",
       success: result => {
         console.log("put request was sent");
         window.location.href = `/devProfile/${devId}`;
@@ -34,25 +34,39 @@ $(() => {
     });
   });
 
-  //====================================================================================================
-  //====================================================================================================
-  //THIS STILL NEED ATTENTION AFTER FRONT END IS COMPLETED TO GET THE PROJECT ID TO PASS IN THE URL
-  $(document).on("click", "#acceptProject", event => {
+  //accept project
+  $(document).on("click", ".developer-accept-request", e => {
     event.preventDefault();
 
     let devId = window.location.pathname.split("/")[2];
 
     //need to get project ID from some html element
-    let projId = $("#someElement").attr("projectID");
+    let projId = e.target.id;
     $.ajax({
       type: "PUT",
-      url: `/api/project/developer/${projId}`
-    }).then(result => {
-      console.log("project status was successfully updated");
-      window.location.href = `/devProfile/${devId}`;
+      url: `/api/project/developer/${projId}`,
+      success: result => {
+        console.log("project status was successfully updated");
+        window.location.href = `/devProfile/${devId}`;
+      },
+      fail: err => {
+        console.log(err);
+      }
     });
-    // .catch(err => {
-    //   console.log(err);
-    // });
+  });
+  //view project
+  $(document).on("click", ".developer-view-project ", e => {
+    console.log(`Clicked View Project ${e.target.id}`);
+    let a = (e.target.id).split("-")
+    console.log(a)
+    $(".trigger_popup_fricc").click(function(){
+      $('.hover_bkgr_fricc').show();
+   });
+   $('.hover_bkgr_fricc').click(function(){
+       $('.hover_bkgr_fricc').hide();
+   });
+   $('.popupCloseButton').click(function(){
+       $('.hover_bkgr_fricc').hide();
+   });
   });
 });

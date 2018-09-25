@@ -12,13 +12,15 @@
         </thead>
         <tbody>
             {{#each project}}
+            {{#if isAssigned}}
             <tr>
-                <td>{{project.id}}</td>
-                <td>{{project.description}}</td>
-                <td>{{project.accepteddate}}/td>
-                <td>{{project.duedate</td>
-                <td><a href="" class="button alt small fit icon fa-info-circle">View Project</a></td>
+                <td>{{id}}</td>
+                <td>{{description}}</td>
+                <td>{{updatedAt}}</td>
+                <td>{{dueDate}}</td>
+                <td><a href="JavaScript:;" class="button alt small fit icon fa-info-circle developer-view-project" id="{{id}}-{{description}}-{{updatedAt}}-{{dueDate}}">View Project</a></td>
             </tr>
+            {{/if}}
             {{/each}}
         </tbody>
     </table>

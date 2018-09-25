@@ -51,7 +51,7 @@ module.exports = app => {
     console.log("made it to the profile pages");
     console.log("Developer Control");
 
-    console.log(req.cookies);
+    // console.log(req.cookies);
     //we have to get the object from the developer database
     let userOb;
     let projArr = [];
@@ -63,8 +63,6 @@ module.exports = app => {
       .then((result, err) => {
         if (err) throw err;
         userOb = result.dataValues;
-        //now we have to get all of the project objects from
-        //the projects table
       })
       .then(() => {
         db.Project.findAll({
@@ -84,7 +82,7 @@ module.exports = app => {
             //need to store the project id somewhere we can access it in order to make changes to the accepted
             //and done status
             userOb.project = projArr;
-            console.log(userOb);
+            console.log("FINAL USEROB", userOb);
             //res.render("postAuth/developer/developerControl", userOb);
             res.render("postAuth/developer/developerControl", userOb);
           })
