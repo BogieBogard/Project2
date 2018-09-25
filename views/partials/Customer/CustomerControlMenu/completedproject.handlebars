@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#each project}}
+            {{#each project}}{{#if isComplete}}
             <tr>
                 <td>{{this.id}}</td>
                 <td>{{this.name}}</td>
@@ -18,7 +18,7 @@
                 <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
                 <td>{{this.updatedAt}}</td>
             </tr>
-            {{/each}}
+            {{/if}}{{/each}}
         </tbody>
     </table>
 </div>
