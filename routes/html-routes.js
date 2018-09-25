@@ -86,7 +86,7 @@ module.exports = app => {
             userOb.project = projArr;
             console.log(userOb);
             //res.render("postAuth/developer/developerControl", userOb);
-            res.render("postAuth/developer/developerControl");
+            res.render("postAuth/developer/developerControl", userOb);
           })
           .catch(err => {
             console.log(err);
