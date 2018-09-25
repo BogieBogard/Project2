@@ -10,12 +10,15 @@
             </tr>
         </thead>
         <tbody>
+            {{#each project}}
             <tr>
-                <td>1041</td>
-                <td>This Project will use blank as blank while making sure the path is clear for the path to be delivered to the back end for rendering.</td>
-                <td>2019-05-15</td>
-                <td>2019-03-15</td>
+                <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
+                <td>{{this.updatedAt}}</td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
 </div>

@@ -68,10 +68,9 @@ $(() => {
       console.log("created a customer and posted data to db");
     }).then(() => {
       window.location.replace("/customerlogin");
-      console.log("login plz");
+      console.log("login please");
     });
   });
-
   $("#addProject").on("click", function(event) {
     event.preventDefault();
     let projectData = {
@@ -95,12 +94,31 @@ $(() => {
       angular: $("#projectAngular").text(),
       react: $("#projectReact").text(),
       python: $("#projectPython").text(),
-      CustomerId: (window.location.pathname.slice(17))
+      CustomerId: window.location.pathname.slice(17)
     };
     console.log("This is Project Data: ", projectData);
-
     $.post("/api/project", projectData, function() {
       console.log("created a project and posted data to db");
+    }).then(() => {
+      window.location.reload();
+      //need to make this into a modal
+      alert("Project Added Successfully!");
+    });
+  });
+  $(".completeButton").on("click", function(event) {
+    let customerID = window.location.pathname.slice(17);
+    let projectID = `${this.id}`;
+    console.log("this is customerID: ", customerID);
+    console.log("This is the project ID:", projectID);
+    $.ajax({
+      type: "PUT",
+      url: `/api/project`,
+      data: { id: projectID }
+    }).then(result => {
+      console.log("put request was sent");
+      window.location.href = `/customerProfile/${customerID}`;
+      //need to make this a modal
+      alert("Project Completed!");
     });
   });
 });
