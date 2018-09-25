@@ -86,12 +86,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     isComplete: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      defaultValue: 0,
       len: [1]
     },
     isAssigned: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      defaultValue: 0,
+      allowNull: false,
       len: [1]
     }
   });
