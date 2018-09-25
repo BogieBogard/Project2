@@ -324,7 +324,17 @@ table th.customer-open-project-due-date {
   font-weight: bold;
 }
 
-.detailbody span i{
-border: solid 1px red;
+#view-project-title,
+#view-project-description,
+#view-project-due-date,
+#view-project-payment{
+width: 100%;
+border: blue solid 1px;
+padding: 10px 0px;
+}
+
+#caption{
+display: block;
+clear: left;
 }
 /* Popup box BEGIN */

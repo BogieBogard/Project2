@@ -4,30 +4,20 @@
         <span class="helper"></span>
         <div class="detailbody">
             <div class="popupCloseButton icon fa-times"></div>
-            <p>Project Id: {{id}}</p>
-            <p>{{description}}</p>
+            <p id="view-project-title">Project Id: {{id}}</p>
+            <p id="view-project-description">{{description}}</p>
             <span style="font-size: 2em; color: gray">
-                <i class="fab fa-angular"></i>
-                <i class="fab fa-css3-alt"></i>
-                <i class="fab fa-html5"></i>
-                <i class="fab fa-java"></i>
-                <i class="fab fa-js-square"></i>
-                <i class="fab fa-node-js"></i>
-                <i class="fab fa-python"></i>
-                <i class="fab fa-react"></i>
+                <i class="fab fa-angular text-center"><span id="caption">{{angular}}</span></i>
+                <i class="fab fa-css3-alt"><span id="caption">{{css}}</span></i>
+                <i class="fab fa-html5"><span id="caption">{{html}}</span></i>
+                <i class="fab fa-java"><span id="caption">{{java}}</span></i>
+                <i class="fab fa-js-square"><span id="caption">{{javascript}}</span></i>
+                <i class="fab fa-node-js"><span id="caption">{{nodeJS}}</span></i>
+                <i class="fab fa-python"><span id="caption">{{python}}</span></i>
+                <i class="fab fa-react"><span id="caption">{{react}}</span></i>
             </span>
-            </br>
-            <span style="font-size: 1em; color: gray">
-                <i>{{angular}}</i>
-                <i>{{css}}</i>
-                <i>{{html}}</i>
-                <i>{{java}}</i>
-                <i>{{javascript}}</i>
-                <i>{{nodeJS}}</i>
-                <i>{{python}}</i>
-                <i>{{react}}</i>
-            </span>
-
+            <p id="view-project-due-date {{dueDate}}"><span >Project Due Date: {{dueDate}}</p>
+            <p id="view-project-payment">Project Value: ${{cost}}</p>
         </div>
     </div>
     {{/each}}
