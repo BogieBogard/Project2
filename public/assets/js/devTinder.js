@@ -100,7 +100,11 @@ $(() => {
 
     $.post("/api/project", projectData, function() {
       console.log("created a project and posted data to db");
+    }).then(() => {
+     window.location.reload();
     });
+
+
   });
  
 });

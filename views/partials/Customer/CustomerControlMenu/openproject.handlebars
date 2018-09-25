@@ -4,6 +4,7 @@
         <thead>
             <tr>
                 <th class="customer-open-project-id">Project id#</th>
+                <th class="customer-open-project-name">Project Name</th>
                 <th class="customer-open-project-description">Project Description</span></th>
                 <th class="customer-open-project-add-developer">Add Developer</th>
                 <th class="customer-open-project-number-developer"># Developer Assigned</th>
@@ -14,6 +15,7 @@
             {{#each project}}
             <tr>
                 <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
                 <td>{{this.description}}</td>
                 <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
                 <td>{{this.DeveloperId}}</td>
