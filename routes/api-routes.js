@@ -195,16 +195,16 @@ module.exports = app => {
       });
   });
   //route to update the project to complete
-  app.put("/api/project", (req, res) => {
+  app.put("/api/project/:id", (req, res) => {
     console.log("This is req.body: ", req.body);
-    console.log("This is req.params: ", req.params);
+    console.log("This is req.params: ", req.params.id);
     db.Project.update(
       {
-        isComplete: "true"
+        "isComplete" : true
       },
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }
     )

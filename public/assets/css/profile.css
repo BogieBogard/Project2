@@ -138,7 +138,8 @@ div#contrabution.dev-profile-content button {
   overflow: scroll;
 }
 div.section {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   text-align: center;
   align-content: center;
   align-items: center;

@@ -14,17 +14,17 @@
         </thead>
         <tbody>
 
-            {{#each project}} {{#if isComplete}}
+            {{#each project}}{{#unless isComplete}}
             <tr>
-                <td>{{this.id}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.description}}</td>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
                 <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
-                <td>{{this.DeveloperId}}</td>
-                <td>{{this.dueDate}}</td>
-                <td><button class="completeButton" id="{{this.id}}">Click to Complete</button></td>
+                <td>{{DeveloperId}}</td>
+                <td>{{dueDate}}</td>
+                <td><button class="completeButton" id="{{id}}">Click to Complete</button></td>
             </tr>
-            {{/if}}{{/each}}
+            {{/unless}}{{/each}}
 
         </tbody>
     </table>
