@@ -87,6 +87,7 @@ module.exports = function(sequelize, DataTypes) {
     isComplete: {
       type: DataTypes.BOOLEAN,
       defaultValue: 0,
+      allowNull: false,
       len: [1]
     },
     isAssigned: {
