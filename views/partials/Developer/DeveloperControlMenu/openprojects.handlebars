@@ -11,17 +11,15 @@
             </tr>
         </thead>
         <tbody>
-            {{#each project}}
-            {{#if isAssigned}}
+            {{#each project}} {{#if isAssigned}}
             <tr>
                 <td>{{id}}</td>
                 <td>{{description}}</td>
                 <td>{{updatedAt}}</td>
                 <td>{{dueDate}}</td>
-                <td><a href="JavaScript:;" class="button alt small fit icon fa-info-circle developer-view-project" id="{{id}}-{{description}}-{{updatedAt}}-{{dueDate}}">View Project</a></td>
+                <td><a href="JavaScript:;" class="button alt small fit icon fa-info-circle developer-view-project" id="{{../id}}-{{id}}-{{description}}-{{updatedAt}}-{{dueDate}}-{{html}}-{{css}}-{{javascript}}-{{java}}-{{nodeJS}}-{{angular}}-{{react}}-{{python}}-{{cost}}">View Project</a></td>
             </tr>
-            {{/if}}
-            {{/each}}
+            {{/if}} {{/each}}
         </tbody>
     </table>
 </div>

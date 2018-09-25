@@ -305,12 +305,12 @@ table th.customer-open-project-due-date {
   font-family: arial;
   font-weight: bold;
   position: absolute;
-  top: -20px;
-  right: -20px;
+  top: -24px;
+  right: -24px;
   font-size: 25px;
   line-height: 30px;
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   text-align: center;
 }
 .popupCloseButton:hover {

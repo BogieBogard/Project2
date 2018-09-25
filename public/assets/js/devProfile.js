@@ -54,13 +54,34 @@ $(() => {
       }
     });
   });
-  
+
   //view project
   $(document).on("click", ".developer-view-project ", e => {
     console.log(`Clicked View Project ${e.target.id}`);
     let a = e.target.id.split("-");
     console.log(a);
     $(".hover_bkgr_fricc").show();
+    $("#headerpage").html(`
+    <div id="view-project-project-id">Projct ID: ${a[1]}</div>
+    <div id="view-project-customer-id">Customer ID: ${a[0]}</div>
+    <div id="view-project-project-description">${a[2]}</div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>
+    <div id="view-project-project-id"></div>`);
+    //This is the order data is passed from the backend to the front end using ID.
+    // Does not need auth and would not be accessable with out proper auth to make the call
+    //-------------------- 5 elements per line 13 elements total
+    // Customer ID, Developer ID, Project Description, update date, due date
+    // html, css, javascript, java, nodejs
+    //angular, react, python
+    //--------------------
   });
   $(".hover_bkgr_fricc").click(function() {
     $(".hover_bkgr_fricc").hide();
