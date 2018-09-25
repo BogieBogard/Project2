@@ -10,12 +10,16 @@
             </tr>
         </thead>
         <tbody>
+            {{#each project}}
+            {{#unless isComplete}}
             <tr>
-                <td>Item 1</td>
-                <td>Ante turpis integer aliquet porttitor.</td>
-                <td>2019-05-14</td>
-                <td>2019-04-28</td>
+                <td>{{id}}</td>
+                <td>{{description}}</td>
+                <td>{{dueDate}}</td>
+                <td>{{updatedAt}}</td>
             </tr>
+            {{/unless}}
+            {{/each}}
         </tbody>
     </table>
 </div>

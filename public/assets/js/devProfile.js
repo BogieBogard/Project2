@@ -54,19 +54,18 @@ $(() => {
       }
     });
   });
+  
   //view project
   $(document).on("click", ".developer-view-project ", e => {
     console.log(`Clicked View Project ${e.target.id}`);
-    let a = (e.target.id).split("-")
-    console.log(a)
-    $(".trigger_popup_fricc").click(function(){
-      $('.hover_bkgr_fricc').show();
-   });
-   $('.hover_bkgr_fricc').click(function(){
-       $('.hover_bkgr_fricc').hide();
-   });
-   $('.popupCloseButton').click(function(){
-       $('.hover_bkgr_fricc').hide();
-   });
+    let a = e.target.id.split("-");
+    console.log(a);
+    $(".hover_bkgr_fricc").show();
+  });
+  $(".hover_bkgr_fricc").click(function() {
+    $(".hover_bkgr_fricc").hide();
+  });
+  $(".popupCloseButton").click(function() {
+    $(".hover_bkgr_fricc").hide();
   });
 });
