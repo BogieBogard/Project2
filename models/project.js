@@ -90,7 +90,7 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
     isAssigned: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       defaultValue: false,
       len: [1]
     }
