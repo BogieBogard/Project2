@@ -10,15 +10,15 @@
             </tr>
         </thead>
         <tbody>
-            {{#each project}}{{#if isComplete}}
+            {{#each project}}{{#unless isComplete}}
             <tr>
                 <td>{{this.id}}</td>
                 <td>{{this.name}}</td>
                 <td>{{this.description}}</td>
                 <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
-                <td>{{this.updatedAt}}</td>
+                
             </tr>
-            {{/if}}{{/each}}
+            {{/unless}}{{/each}}
         </tbody>
     </table>
 </div>

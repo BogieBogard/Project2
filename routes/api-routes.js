@@ -200,7 +200,7 @@ module.exports = app => {
     console.log("This is req.params: ", req.params);
     db.Project.update(
       {
-        isComplete: true
+        isComplete: "true"
       },
       {
         where: {

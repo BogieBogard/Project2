@@ -123,6 +123,7 @@ module.exports = app => {
         });
         console.log("This is projectArr ", projectArr);
         customerData.project = projectArr;
+        console.log("CLICK ME HERE" , customerData)
         res.render("postAuth/Customer/customerControl", customerData);
       });
      

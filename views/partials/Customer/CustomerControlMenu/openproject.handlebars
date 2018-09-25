@@ -14,7 +14,7 @@
         </thead>
         <tbody>
 
-            {{#each project}} {{#unless isComplete}}
+            {{#each project}} {{#if isComplete}}
             <tr>
                 <td>{{this.id}}</td>
                 <td>{{this.name}}</td>
@@ -24,7 +24,7 @@
                 <td>{{this.dueDate}}</td>
                 <td><button class="completeButton" id="{{this.id}}">Click to Complete</button></td>
             </tr>
-            {{/unless}} {{/each}}
+            {{/if}}{{/each}}
 
         </tbody>
     </table>
