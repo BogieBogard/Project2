@@ -9,6 +9,7 @@
                 <th class="customer-open-project-add-developer">Add Developer</th>
                 <th class="customer-open-project-number-developer"># Developer Assigned</th>
                 <th class="customer-open-project-due-date">Due Date</th>
+                <th class="customer-open-project-complete?">Complete?</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
                 <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
                 <td>{{this.DeveloperId}}</td>
                 <td>{{this.dueDate}}</td>
+                <td><button class="completeButton" id="{{this.id}}">Click to Complete</button></td>
             </tr>
             {{/each}}
         </tbody>

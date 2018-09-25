@@ -194,4 +194,25 @@ module.exports = app => {
         console.log(err);
       });
   });
+  //route to update the project to complete
+  app.put("/api/project", (req, res) => {
+    console.log("This is req.body: ", req.body);
+    console.log("This is req.params: ", req.params);
+    db.Project.update(
+      {
+        isComplete: true
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("project was completed!");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 };

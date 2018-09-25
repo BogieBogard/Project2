@@ -85,7 +85,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     isComplete: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
       len: [1]
     },
