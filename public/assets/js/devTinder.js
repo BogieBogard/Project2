@@ -100,7 +100,9 @@ $(() => {
     $.post("/api/project", projectData, function() {
       console.log("created a project and posted data to db");
     }).then(() => {
-      window.location.reload();
+      // window.location.reload();
+      let customerID = window.location.pathname.slice(17);
+      window.location.href = `/customerProfile/${customerID}`;
       //need to make this into a modal
       alert("Project Added Successfully!");
     });
