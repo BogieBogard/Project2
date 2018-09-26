@@ -85,13 +85,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     isComplete: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
+      allowNull: false,
       len: [1]
     },
     isAssigned: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
+      allowNull: false,
       len: [1]
     }
   });
