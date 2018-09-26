@@ -68,4 +68,9 @@ $(() => {
   $(".popupCloseButton").click(function() {
     $(".hover_bkgr_fricc").hide();
   });
+
+  //match developer button click
+  $(document).on("click", "a.matchButton.button.fit.small.icon.fa-plus", e=>{
+    console.log("match developer call")
+  })
 });
