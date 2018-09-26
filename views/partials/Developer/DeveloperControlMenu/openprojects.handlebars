@@ -11,13 +11,13 @@
             </tr>
         </thead>
         <tbody>
-            {{#each project}}
+            {{#each openproject}}
             <tr>
-                <td>{{id}}</td>
-                <td>{{description}}</td>
-                <td>{{updatedAt}}</td>
-                <td>{{dueDate}}</td>
-                <td><a href="JavaScript:;" class="button alt small fit icon fa-info-circle developer-view-project" id="{{id}}">View Project</a></td>
+                <td>{{this.id}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.updatedAt}}</td>
+                <td>{{this.dueDate}}</td>
+                <td><a href="JavaScript:;" class="button alt small fit icon fa-info-circle developer-view-project" id="{{this.id}}">View Project</a></td>
             </tr>
             {{/each}}
         </tbody>

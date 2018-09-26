@@ -10,12 +10,12 @@
             </tr>
         </thead>
         <tbody>
-            {{#each project}}
+            {{#each completeProjects}}
             <tr>
-                <td>{{id}}</td>
-                <td>{{description}}</td>
-                <td>{{dueDate}}</td>
-                <td>{{updatedAt}}</td>
+                <td>{{this.id}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.dueDate}}</td>
+                <td>{{this.updatedAt}}</td>
             </tr>
             {{/each}}
         </tbody>
