@@ -47,7 +47,9 @@ module.exports = app => {
   });
 
   //what the developer sees after logging in
-
+  //this route needs attention when merged I tried implementing the same changes yall made on your end
+  //yall go it before i did so make sure this doesnt overwrite yalls route
+  //same with the customer
   app.get("/devProfile/:id", checkAuth, (req, res) => {
     console.log("made it to the profile pages");
     console.log("Developer Control");
@@ -74,20 +76,18 @@ module.exports = app => {
           }
         })
           .then(result => {
-            result.map(x => {
-              console.log(x.dataValues);
-              projArr.push(x.dataValues);
-            });
+            let completeProjects = result.filter(x => x.isComplete == 1);
+            let notCompleteProjects = result.filter(y => y.isComplete == 0);
 
-            console.log(projArr);
-            //placing the entirity of the project object that was returned
-            //in the userOb under the project key
-            //need to store the project id somewhere we can access it in order to make changes to the accepted
-            //and done status
-            userOb.project = projArr;
-            console.log(userOb);
+            console.log("This is customerData", customerData);
             //res.render("postAuth/developer/developerControl", userOb);
-            res.render("postAuth/developer/developerControl");
+            res.render("postAuth/developer/developerControl", {
+              name: userOb.name,
+              photo: userOb.photo,
+              completeProjects: completeProjects,
+              notCompleteProjects: notCompleteProjects
+
+            });
           })
           .catch(err => {
             console.log(err);
@@ -103,7 +103,7 @@ module.exports = app => {
     console.log("made it to the cust profile page");
     console.log("Customer Control");
     let customerData;
-    let projectArr = [];
+
     db.Customer.findOne({
       where: {
         id: req.params.id
@@ -117,17 +117,19 @@ module.exports = app => {
           CustomerId: req.params.id
         }
       }).then(result => {
-        result.map(x => {
-          console.log(x.dataValues);
-          projectArr.push(x.dataValues);
+        let completeProjects = result.filter(x => x.isComplete == 1);
+        let notCompleteProjects = result.filter(y => y.isComplete == 0);
+
+        console.log("This is customerData", customerData);
+
+        res.render("postAuth/Customer/customerControl", {
+          name: customerData.name,
+          photo: customerData.photo,
+          completeProjects: completeProjects,
+          notCompleteProjects: notCompleteProjects
         });
-        console.log("This is projectArr ", projectArr);
-        customerData.project = projectArr;
-        res.render("postAuth/Customer/customerControl", customerData);
       });
-     
     });
-  
   });
 
   //what is this?

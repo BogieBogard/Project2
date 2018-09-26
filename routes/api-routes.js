@@ -1,6 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcrypt-nodejs");
 const checkAuth = require("../check-auth.js");
+const helper = require("../helperObject")
 
 module.exports = app => {
   app.get("/api/developers", (req, res) => {
@@ -114,8 +115,30 @@ module.exports = app => {
     });
   });
 
+  //route to update the project to complete
+  app.put("/api/project", checkAuth, (req, res) => {
+    console.log("This is req.body: ", req.body);
+    console.log("This is req.params: ", req.params);
+    db.Project.update(
+      {
+        isComplete: true
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("project was completed!");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   //this route creates a new project
-  app.post("/api/project", (req, res) => {
+  app.post("/api/project", checkAuth, (req, res) => {
     console.log("This is req.body", req.body);
 
     db.Project.create({
@@ -174,11 +197,32 @@ module.exports = app => {
       });
   });
 
+  //this route handles the matchingggggg
+  //removed check auth for testing
+  app.get("/api/projectmatch/:id", (req, res) => {
+    //get projectId
+    let projectId = req.params.id;
+
+    try {
+      //inside project array we will have an array with the project parameters
+
+      console.log("we in here");
+      //inside devArr we will have an array with all of the dev objects that matched the project
+      
+      //this resets the variance for the next search
+      helper.projectQuery(projectId, (result) => {
+        res.status(200).json(result);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
   //route hit when the developer accepts a project
   app.put("/api/project/developer/:id", checkAuth, (req, res) => {
     db.Project.update(
       {
-        isAssigned: 1
+        isAssigned: true
       },
       {
         where: {
@@ -189,27 +233,6 @@ module.exports = app => {
     )
       .then(result => {
         res.status(200).send("project was accepted");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
-  //route to update the project to complete
-  app.put("/api/project", (req, res) => {
-    console.log("This is req.body: ", req.body);
-    console.log("This is req.params: ", req.params);
-    db.Project.update(
-      {
-        isComplete: true
-      },
-      {
-        where: {
-          id: req.body.id
-        }
-      }
-    )
-      .then(result => {
-        res.status(200).send("project was completed!");
       })
       .catch(err => {
         console.log(err);
