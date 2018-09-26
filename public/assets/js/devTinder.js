@@ -123,6 +123,20 @@ $(() => {
       alert("Project Completed!");
     });
   });
+  
+  $(document).on("click", ".matchButton", function(event){
+    event.preventDefault();
+    let projectId = $(this).attr("data-id")
+    $.ajax({
+      type: "Get",
+      url: `/api/projectmatch/${projectId}`
+    }).then(result => {
+      //ok, so in the result, I am going to return an array with all of the developers that "matched"
+      //with the project.
+    })
+
+  })
+});
   $("#hibernateButton").on("click", function(event) {
     event.preventDefault();
     window.location.replace("/customerlogin");
