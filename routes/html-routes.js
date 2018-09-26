@@ -119,10 +119,11 @@ module.exports = app => {
       }).then(result => {
         let completeProjects = result.filter(x => x.isComplete == 1);
         let notCompleteProjects = result.filter(y => y.isComplete == 0);
-
+        console.log("This is projectArr ", projectArr);
         console.log("This is customerData", customerData);
-
-        res.render("postAuth/Customer/customerControl", {
+        customerData.project = projectArr;
+        console.log(customerData.project);
+        res.render("postAuth/customer/customerControl", {
           name: customerData.name,
           photo: customerData.photo,
           completeProjects: completeProjects,
@@ -131,15 +132,4 @@ module.exports = app => {
       });
     });
   });
-
-  //what is this?
-  app.get("/1", (req, res) => {
-    console.log("Developer Profile");
-    res.render("postAuth/Customer/customerControl");
-  });
-
-  // app.get("/2", (req, res) => {
-  //   console.log("Developer Card");
-  //   res.render("postAuth/Developer/developerProfilecard");
-  // });
 };
