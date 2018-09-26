@@ -118,11 +118,11 @@ $(() => {
     console.log("This is the project ID:", projectID);
     $.ajax({
       type: "PUT",
-      url: `/api/project/${projectID}`,
+      url: `/api/project`,
       data: { id: projectID }
     }).then(result => {
       console.log("put request was sent");
-      window.location.reload();
+      window.location.href = `/customerProfile/${customerID}`;
       //need to make this a modal
       alert("Project Completed!");
     });
