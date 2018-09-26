@@ -22,6 +22,10 @@ module.exports = app => {
     console.log("Front End All Page Test Call");
     res.render("layouts/allpageload");
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> customer_routes_handlebars
   // developer login -- forget password -- Signup
   app.get("/developerlogin", (req, res) => {
     console.log("Developer Main Page");
@@ -99,7 +103,40 @@ module.exports = app => {
   app.get("/customerProfile/:id", checkAuth, (req, res) => {
     console.log("made it to the cust profile page");
     console.log("Customer Control");
-    res.render("postAuth/Customer/customerControl");
+    let customerData;
+    let projectArr = [];
+    db.Customer.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((result, err) => {
+      if (err) throw err;
+      customerData = result.dataValues;
+      console.log("This is CustomerId: ", req.params.id);
+      db.Project.findAll({
+        where: {
+          CustomerId: req.params.id
+        }
+      }).then(result => {
+        let completeProjects = result.filter(x => x.isComplete == 1);
+        let notCompleteProjects = result.filter(y => y.isComplete == 0);
+        console.log("This is projectArr ", projectArr);
+        console.log("This is customerData", customerData);
+        customerData.project = projectArr;
+<<<<<<< HEAD
+        console.log("CLICK ME HERE" , customerData)
+        res.render("postAuth/Customer/customerControl", customerData);
+=======
+        console.log(customerData.project);
+        res.render("postAuth/Customer/customerControl", {
+          name: customerData.name,
+          photo: customerData.photo,
+          completeProjects: completeProjects,
+          notCompleteProjects: notCompleteProjects
+        });
+>>>>>>> d173b8228ee20593d0f67889ce3d04889c61a0d7
+      });
+    });
   });
 
   //what is this?

@@ -117,7 +117,6 @@ module.exports = app => {
   //this route creates a new project
   app.post("/api/project", (req, res) => {
     console.log("This is req.body", req.body);
-    console.log("This is req.params", req.params);
 
     db.Project.create({
       name: req.body.name,
@@ -191,6 +190,27 @@ module.exports = app => {
     )
       .then(result => {
         res.status(200).send("project was accepted");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  //route to update the project to complete
+  app.put("/api/project/:id", (req, res) => {
+    console.log("This is req.body: ", req.body);
+    console.log("This is req.params: ", req.params.id);
+    db.Project.update(
+      {
+        "isComplete" : true
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("project was completed!");
       })
       .catch(err => {
         console.log(err);
