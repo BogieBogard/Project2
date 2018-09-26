@@ -80,18 +80,17 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER
     },
     ratingCount: {
-        type: DataTypes.INTEGER
-      }
+      type: DataTypes.INTEGER
+    }
   });
 
-  // Add a belongsTo association to Authors here
-  // Example: https://github.com/sequelize/express-example/blob/master/models/task.js
+  //associations here
 
-  Developer.associate = function (models) {
+  Developer.associate = function(models) {
     models.Developer.hasMany(models.Project, {
       foreignKey: {
         allowNull: true
-            }
+      }
     });
   };
   return Developer;
