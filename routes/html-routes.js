@@ -119,10 +119,7 @@ module.exports = app => {
       }).then(result => {
         let completeProjects = result.filter(x => x.isComplete == 1);
         let notCompleteProjects = result.filter(y => y.isComplete == 0);
-        console.log("This is projectArr ", projectArr);
         console.log("This is customerData", customerData);
-        customerData.project = projectArr;
-        console.log(customerData.project);
         res.render("postAuth/customer/customerControl", {
           name: customerData.name,
           photo: customerData.photo,
