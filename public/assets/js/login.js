@@ -53,9 +53,6 @@ $(() => {
       //this gets the user id to pass in the get request
       //we can query the DB on the back end to get all of the user data
       userId = result.id;
-
-      console.log(userId);
-
       window.location.href = `/devProfile/${userId}`;
     });
   });

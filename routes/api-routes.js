@@ -1,7 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcrypt-nodejs");
 const checkAuth = require("../check-auth.js");
-const helper = require("../helperObject")
+const helper = require("../helperObject");
 
 module.exports = app => {
   app.get("/api/developers", (req, res) => {
@@ -166,12 +166,13 @@ module.exports = app => {
   });
 
   //route to hit when developer wants to update their profile
-  app.post("/api/developer/:id", checkAuth, (req, res) => {
+  app.put("/api/developer/:id", checkAuth, (req, res) => {
     //assuming the request body is an object with all of the fields that need to be updated
     //I need to send an entirely new object with ALL of the new values
     //hitting update would need to send the post request and then
     //set window.location.href = to the deveprofile page so the get request can be sent again
     //and the page can be updated
+    // console.log(req.params.id)
     db.Developer.update(
       {
         html: req.body.html,
@@ -208,9 +209,9 @@ module.exports = app => {
 
       console.log("we in here");
       //inside devArr we will have an array with all of the dev objects that matched the project
-      
+
       //this resets the variance for the next search
-      helper.projectQuery(projectId, (result) => {
+      helper.projectQuery(projectId, result => {
         res.status(200).json(result);
       });
     } catch (error) {

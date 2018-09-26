@@ -11,13 +11,17 @@
             </tr>
         </thead>
         <tbody>
+            {{#each projectinvite}}
             <tr>
-                <td>Item 1</td>
-                <td>Ante turpis integer aliquet porttitor.</td>
-                <td>2019-05-14</td>
-                <td><a href="" class="button alt small fit icon fa-info-circle">View Project</a></td>
-                <td><a href="" class="button fit small icon fa-check">Accept Request</a></td>
+                <td>{{this.id}}</td>
+                <td>{{this.ojectinvitedescription}}</td>
+                <td>{{this.dueDate}}</td>
+                <td><a href="JavaScript:;" class="button alt small fit icon fa-info-circle developer-view-project" id="{{this.id}}">View Project</a></td>
+                <td><a href="JavaScript:;" class="button fit small icon fa-check developer-accept-request" id="{{this.id}}">Accept
+                        Request
+                    </a></td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
 </div>

@@ -47,7 +47,7 @@ module.exports = app => {
           );
           return res
             .status(200)
-            .cookie("jswt", `Bearer ${token}`, { maxAge: 60 * 60 * 24 })
+            .cookie("jswt", `Bearer ${token}`, { maxAge: 60 * 60 * 24 * 1000 })
             .json({
               id: devId
             });

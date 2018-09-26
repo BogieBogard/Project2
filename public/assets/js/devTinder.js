@@ -1,5 +1,7 @@
 $(() => {
   console.log("devTinder.js Loaded");
+
+  // developer signup page submit button
   $("#devSubmit").on("click", function(event) {
     event.preventDefault();
     let developerData = {
@@ -41,6 +43,8 @@ $(() => {
       console.log("login plz");
     });
   });
+
+  //customer signup page button
   $("#customerSubmit").on("click", function(event) {
     event.preventDefault();
     let customerData = {
@@ -114,28 +118,46 @@ $(() => {
     console.log("This is the project ID:", projectID);
     $.ajax({
       type: "PUT",
-      url: `/api/project`,
+      url: `/api/project/${projectID}`,
       data: { id: projectID }
     }).then(result => {
       console.log("put request was sent");
-      window.location.href = `/customerProfile/${customerID}`;
+      window.location.reload();
       //need to make this a modal
       alert("Project Completed!");
     });
   });
-  
-  $(document).on("click", ".matchButton", function(event){
+
+  //Developer Update Profiel Button
+  $("#profile-update").on("submit", () => {
     event.preventDefault();
-    let projectId = $(this).attr("data-id")
+    console.log("Developer Profile Update Clicked");
+    let DevUpdate = {
+      html: $("#html").text(),
+      css: $("#css").text(),
+      javascript: $("#javascript").text(),
+      java: $("#javascript").text(),
+      nodeJS: $("#nodejs").text(),
+      angular: $("#angular").text(),
+      react: $("#react").text(),
+      python: $("#python").text()
+    };
+    console.log(DevUpdate);
+    $.post("/api/developer/profileupdate", DevUpdate, () => {
+      console.log("Changed Developer Profile Settings");
+    });
+  });
+  $(document).on("click", ".matchButton", function(event) {
+    event.preventDefault();
+    let projectId = $(this).attr("data-id");
     $.ajax({
       type: "Get",
       url: `/api/projectmatch/${projectId}`
     }).then(result => {
       //ok, so in the result, I am going to return an array with all of the developers that "matched"
       //with the project.
-    })
-
-  })
+    });
+  });
   $("#hibernateButton").on("click", function(event) {
     event.preventDefault();
     window.location.replace("/customerlogin");
