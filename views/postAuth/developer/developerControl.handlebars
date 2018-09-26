@@ -1,32 +1,11 @@
 <div class="profileparent">
-    {{#each project}}
-    <div class="hover_bkgr_fricc" id="{{id}}">
-        <span class="helper"></span>
-        <div class="detailbody">
-            <div class="popupCloseButton icon fa-times"></div>
-            <p id="view-project-title">Project Id: {{id}}</p>
-            <p id="view-project-description">{{description}}</p>
-            <span style="font-size: 2em; color: gray">
-                <i class="fab fa-angular text-center"><span id="caption">{{angular}}</span></i>
-                <i class="fab fa-css3-alt"><span id="caption">{{css}}</span></i>
-                <i class="fab fa-html5"><span id="caption">{{html}}</span></i>
-                <i class="fab fa-java"><span id="caption">{{java}}</span></i>
-                <i class="fab fa-js-square"><span id="caption">{{javascript}}</span></i>
-                <i class="fab fa-node-js"><span id="caption">{{nodeJS}}</span></i>
-                <i class="fab fa-python"><span id="caption">{{python}}</span></i>
-                <i class="fab fa-react"><span id="caption">{{react}}</span></i>
-            </span>
-            <p id="view-project-due-date {{dueDate}}"><span >Project Due Date: {{dueDate}}</p>
-            <p id="view-project-payment">Project Value: ${{cost}}</p>
-        </div>
-    </div>
-    {{/each}}
+    
     <div class="sidenav">
         <div class="image round fit">
-            <img src="{{photo}}" alt="developer photo" />
+            <img src="{{developer.photo}}" alt="developer photo" />
         </div>
         <div class="navlist">
-            <h4>{{name}}</h4>
+            <h4>{{developer.name}}</h4>
 
             <a href="#profile-settings" class="button alt small fit icon fa-info-circle">Profile Settings</a>
             <a href="#open-invites" class="button alt small fit icon fa-inbox">Open Invites</a>

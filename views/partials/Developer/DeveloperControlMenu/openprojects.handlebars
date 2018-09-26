@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            {{#each project}}{{#unless isComplete}}{{#if isAssigned}}
+            {{#each project}}
             <tr>
                 <td>{{id}}</td>
                 <td>{{description}}</td>
@@ -19,7 +19,7 @@
                 <td>{{dueDate}}</td>
                 <td><a href="JavaScript:;" class="button alt small fit icon fa-info-circle developer-view-project" id="{{id}}">View Project</a></td>
             </tr>
-            {{/if}}{{/unless}}{{/each}}
+            {{/each}}
         </tbody>
     </table>
 </div>

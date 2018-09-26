@@ -11,14 +11,12 @@
         </thead>
         <tbody>
             {{#each project}}
-            {{#if isComplete}}
             <tr>
                 <td>{{id}}</td>
                 <td>{{description}}</td>
                 <td>{{dueDate}}</td>
                 <td>{{updatedAt}}</td>
             </tr>
-            {{/if}}
             {{/each}}
         </tbody>
     </table>

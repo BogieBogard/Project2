@@ -1,36 +1,33 @@
 <form id="profile-update">
     <h2>Profile Settings</h2>
     <div class="dev-slider devcontrol">
+        {{#if developer}}
         <p id="slider-instruction">Update proficiency and/or familiarity with the sliders</p>
         <p><label for="range_weight">Angular: <span class="slider_label"></span></label> <input type="range" name="angular"
-                class="slider" min="0" max="100" value="{{angular}}">
+                class="slider" min="0" max="100" value="{{developer.angular}}">
             <span class="slider_label" id="angularUpdate">0</span>%</p>
-
         <p><label for="range_weight">CSS: <span class="slider_label"></span></label> <input type="range" name="css" class="slider"
-                min="0" max="100" value="{{css}}">
+                min="0" max="100" value="{{developer.css}}">
             <span class="slider_label" id="cssUpdate">0</span>%</p>
-
         <p><label for="range_weight">HTML: <span class="slider_label"></span></label> <input type="range" name="html" class="slider"
-                min="0" max="100" value="{{html}}">
+                min="0" max="100" value="{{developer.html}}">
             <span class="slider_label" id="htmlUpdate">0</span>%</p>
-
         <p><label for="range_weight">Java: <span class="slider_label"></span></label> <input type="range" name="java" class="slider"
-                min="0" max="100" value="{{java}}">
+                min="0" max="100" value="{{developer.java}}">
             <span class="slider_label" id="javaUpdate">0</span>%</p>
-
         <p><label for="range_weight">Javascript: <span class="slider_label"></span></label> <input type="range" name="javascript"
-                class="slider" min="0" max="100" value="{{javascript}}">
+                class="slider" min="0" max="100" value="{{developer.javascript}}">
             <span class="slider_label" id="javascriptUpdate">0</span>%</p>
-
         <p><label for="range_weight">Node.js: <span class="slider_label"></span></label> <input type="range" name="nodejs"
-                class="slider" min="0" max="100" value="{{nodeJS}}">
+                class="slider" min="0" max="100" value="{{developer.nodeJS}}">
             <span class="slider_label" id="nodejsUpdate">0</span>%</p>
         <p><label for="range_weight">Python: <span class="slider_label"></span></label> <input type="range" name="react"
-                class="slider" min="0" max="100" value="{{python}}">
+                class="slider" min="0" max="100" value="{{developer.python}}">
             <span class="slider_label" id="pythonUpdate">0</span>%</p>
         <p><label for="range_weight">React: <span class="slider_label"></span></label> <input type="range" name="react" class="slider"
-                min="0" max="100" value="{{react}}">
+                min="0" max="100" value="{{developer.react}}">
             <span class="slider_label" id="reactUpdate">0</span>%</p>
+        {{/if}}
     </div>
     <button type="submit" class="btn btn-primary" id="updateProfile">Update</button>
 </form>
