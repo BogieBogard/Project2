@@ -123,7 +123,7 @@ module.exports = app => {
         console.log("This is customerData", customerData);
         customerData.project = projectArr;
         console.log(customerData.project);
-        res.render("postAuth/Customer/customerControl", {
+        res.render("postAuth/customer/customerControl", {
           name: customerData.name,
           photo: customerData.photo,
           completeProjects: completeProjects,
