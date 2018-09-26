@@ -117,18 +117,25 @@ module.exports = app => {
           CustomerId: req.params.id
         }
       }).then(result => {
-        result.map(x => {
-          console.log(x.dataValues);
-          projectArr.push(x.dataValues);
-        });
+        let completeProjects = result.filter(x => x.isComplete == 1);
+        let notCompleteProjects = result.filter(y => y.isComplete == 0);
         console.log("This is projectArr ", projectArr);
+        console.log("This is customerData", customerData);
         customerData.project = projectArr;
+<<<<<<< HEAD
         console.log("CLICK ME HERE" , customerData)
         res.render("postAuth/Customer/customerControl", customerData);
+=======
+        console.log(customerData.project);
+        res.render("postAuth/Customer/customerControl", {
+          name: customerData.name,
+          photo: customerData.photo,
+          completeProjects: completeProjects,
+          notCompleteProjects: notCompleteProjects
+        });
+>>>>>>> d173b8228ee20593d0f67889ce3d04889c61a0d7
       });
-     
     });
-  
   });
 
   //what is this?

@@ -10,15 +10,19 @@
             </tr>
         </thead>
         <tbody>
-            {{#each project}}{{#if isComplete}}
+            {{#each completeProjects}} 
             <tr>
                 <td>{{this.id}}</td>
                 <td>{{this.name}}</td>
                 <td>{{this.description}}</td>
+<<<<<<< HEAD
                 <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
                 <td>{{this.dueDate}}</td>
+=======
+                <td>{{this.updatedAt}}</td>
+>>>>>>> d173b8228ee20593d0f67889ce3d04889c61a0d7
             </tr>
-            {{/if}}{{/each}}
+            {{/each}}
         </tbody>
     </table>
 </div>
