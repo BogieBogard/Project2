@@ -121,4 +121,9 @@ $(() => {
       alert("Project Completed!");
     });
   });
+  $("#hibernateButton").on("click", function(event) {
+    event.preventDefault();
+    window.location.replace("/customerlogin");
+    alert("Logged out!");
+  });
 });
