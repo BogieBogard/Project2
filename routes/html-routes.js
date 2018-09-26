@@ -132,15 +132,4 @@ module.exports = app => {
       });
     });
   });
-
-  //what is this?
-  app.get("/1", (req, res) => {
-    console.log("Developer Profile");
-    res.render("postAuth/Customer/customerControl");
-  });
-
-  // app.get("/2", (req, res) => {
-  //   console.log("Developer Card");
-  //   res.render("postAuth/Developer/developerProfilecard");
-  // });
 };
