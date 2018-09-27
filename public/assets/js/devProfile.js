@@ -25,8 +25,13 @@ $(() => {
       data: devObj,
       // datatype: "obj",
       success: result => {
-        console.log("put request was sent");
-        window.location.href = `/devProfile/${devId}`;
+        //success message
+        toastr.success("Successfully updated profile!");
+        console.log("Developer Profile Updates");
+        let delay = 1500;
+        setTimeout(function() {
+          window.location.href = `/devProfile/${devId}`;
+        }, delay);
       },
       fail: err => {
         console.log(err);
@@ -46,8 +51,13 @@ $(() => {
       type: "PUT",
       url: `/api/project/developer/${projId}`,
       success: result => {
+        //success message
+        toastr.success("You Have Accepted This Project!");
         console.log("project status was successfully updated");
-        window.location.href = `/devProfile/${devId}`;
+        let delay = 1500;
+        setTimeout(function() {
+          window.location.href = `/devProfile/${devId}`;
+        }, delay);
       },
       fail: err => {
         console.log(err);
@@ -58,7 +68,7 @@ $(() => {
   //view project
   $(document).on("click", ".developer-view-project", e => {
     console.log(`Clicked View Project ${e.target.id}`);
-    let projectID = e.target.id
+    let projectID = e.target.id;
     console.log(`project id: ${projectID}`);
     $(`.hover_bkgr_fricc#${projectID}`).show();
   });
