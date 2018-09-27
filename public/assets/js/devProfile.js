@@ -58,19 +58,6 @@ $(() => {
   //view project
   $(document).on("click", ".developer-view-project", e => {
     console.log(`Clicked View Project ${e.target.id}`);
-    let projectID = e.target.id
-    console.log(`project id: ${projectID}`);
-    $(`.hover_bkgr_fricc#${projectID}`).show();
+    let projectID = e.target.id;
   });
-  $(".hover_bkgr_fricc").click(function() {
-    $(".hover_bkgr_fricc").hide();
-  });
-  $(".popupCloseButton").click(function() {
-    $(".hover_bkgr_fricc").hide();
-  });
-
-  //match developer button click
-  $(document).on("click", "a.matchButton.button.fit.small.icon.fa-plus", e=>{
-    console.log("match developer call")
-  })
 });

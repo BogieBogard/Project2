@@ -57,9 +57,7 @@ module.exports = app => {
             let projectinvite = result.filter(
               z => !z.isAssigned && !z.isComplete
             );
-            let openproject = result.filter(
-              b => b.isAssigned && !b.isComplete
-            );
+            let openproject = result.filter(b => b.isAssigned && !b.isComplete);
             let completeProjects = result.filter(
               x => x.isAssigned && x.isComplete
             );
@@ -115,5 +113,9 @@ module.exports = app => {
       .catch(err => {
         if (err) throw err;
       });
+  });
+  app.get("/testing", (req, res) => {
+    console.log("Profilecard Page");
+    res.render("postAuth/developer/developerProfilecard");
   });
 };

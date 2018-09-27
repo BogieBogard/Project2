@@ -147,17 +147,72 @@ $(() => {
       console.log("Changed Developer Profile Settings");
     });
   });
+
   $(document).on("click", ".matchButton", function(event) {
     event.preventDefault();
     let projectId = $(this).attr("data-id");
+    console.log("this is the project id", projectId);
     $.ajax({
       type: "Get",
-      url: `/api/projectmatch/${projectId}`
+      url: `/api/projectmatch/${projectId}`,
+      complete: result => {
+        $(".modal-body").html(""); // Used to clear the html for when the call happens again.
+        let complete = result.responseJSON;
+        // console.log("HELLO GLOP", result.responseJSON);
+        for (let i = 0; i < complete.length; i++) {
+          let choice = complete[i];
+          // console.log("Result Lenght", i);
+          $(".modal-body").append(`<div class="card" id="${projectId}">
+          <div class="developer-profilecard-photo">
+          <img src="${choice.photo}" alt="developer_profile_image"></div>
+          <h1 id="profilecard-name">${choice.name}</h1>
+          <p class="title">Software / Full-stack Developer</p>
+          <a href="JavaScript:;" class="button alt small fit not-active" id="rating"><i class="icon fa-star rating">62</i><i class="icon fa-thumbs-up rating">50</i><i class="icon fa-thumbs-down rating">12</i></a>
+          <a href="JavaScript:;" class="view-developer addproject button alt small fit icon fa-info-circle" id="${
+            choice.id
+          }">View Developer Profile</a>
+          <a href="JavaScript:;" class="send-invite viewprofile button small fit icon fa-plus" id="${
+            choice.id
+          }">Invite to project</a>
+      </div>`);
+        }
+      }
     }).then(result => {
-      //ok, so in the result, I am going to return an array with all of the developers that "matched"
-      //with the project.
+      $(".modal").css({
+        display: "block"
+      });
     });
   });
+
+  $(".close").on("click", () => {
+    $(".modal").css({
+      display: "none"
+    });
+  });
+
+  $(document).on("click", ".send-invite", event => {
+    // console.log(event.currentTarget.id) //VERY IMPORTANT! DO NOT DELETE! PATRICK WILL GET ANGRY AT YOU! >:()
+    let relocation = window.location.pathname.split('/');
+    console.log("Blu", relocation[2])
+    let projectid = $(".card").attr("id");
+    let developerid = event.currentTarget.id;
+
+    console.log(`${projectid} ${developerid}`);
+    let dataValues = {
+      pid: projectid,
+      did: developerid
+    }
+    console.log(dataValues)
+    $.ajax({
+      type: "PUT",
+      url: `/api/project/${projectid}/developer/${developerid}`,
+      data: dataValues
+    }).then(result => {
+      console.log("customer invite sent");
+      window.location.href = `/customerProfile/${relocation[2]}`;
+    });
+  });
+
   $("#hibernateButton").on("click", function(event) {
     event.preventDefault();
     window.location.replace("/customerlogin");
