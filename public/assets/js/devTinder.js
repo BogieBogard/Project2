@@ -1,6 +1,5 @@
 $(() => {
   console.log("devTinder.js Loaded");
-
   // developer signup page submit button
   $("#devSubmit").on("click", function(event) {
     event.preventDefault();
@@ -39,8 +38,13 @@ $(() => {
     $.post("/api/developers", developerData, function() {
       console.log("created a user and posted data to db");
     }).then(() => {
-      window.location.replace("/developerlogin");
-      console.log("login plz");
+      //success message
+      toastr.success("Thank you for registering! Please Log-in");
+      console.log("Developer Added");
+      let delay = 1500;
+      setTimeout(function() {
+        window.location.replace("/developerlogin");
+      }, delay);
     });
   });
 
@@ -71,8 +75,13 @@ $(() => {
     $.post("/api/customers", customerData, function() {
       console.log("created a customer and posted data to db");
     }).then(() => {
-      window.location.replace("/customerlogin");
-      console.log("login please");
+      //success message
+      toastr.success("Thank you for registering! Please Log-in");
+      console.log("Customer Added");
+      let delay = 1500;
+      setTimeout(function() {
+        window.location.replace("/customerlogin");
+      }, delay);
     });
   });
   $("#addProject").on("click", function(event) {
@@ -104,11 +113,14 @@ $(() => {
     $.post("/api/project", projectData, function() {
       console.log("created a project and posted data to db");
     }).then(() => {
-      // window.location.reload();
       let customerID = window.location.pathname.slice(17);
-      window.location.href = `/customerProfile/${customerID}`;
-      //need to make this into a modal
-      alert("Project Added Successfully!");
+      //success
+      toastr.success("Project Added!");
+      console.log("Project Added!");
+      let delay = 1500;
+      setTimeout(function() {
+        window.location.href = `/customerProfile/${customerID}#open-projects`;
+      }, delay);
     });
   });
   $(".completeButton").on("click", function(event) {
@@ -121,14 +133,16 @@ $(() => {
       url: `/api/project`,
       data: { id: projectID }
     }).then(result => {
+      toastr.success("Project Complete!");
       console.log("put request was sent");
-      window.location.href = `/customerProfile/${customerID}`;
-      //need to make this a modal
-      alert("Project Completed!");
+      let delay = 1500;
+      setTimeout(function() {
+        window.location.href = `/customerProfile/${customerID}#completed-projects`;
+      }, delay);
     });
   });
 
-  //Developer Update Profiel Button
+  //Developer Update Profile Button
   $("#profile-update").on("submit", () => {
     event.preventDefault();
     console.log("Developer Profile Update Clicked");
@@ -160,7 +174,11 @@ $(() => {
   });
   $("#hibernateButton").on("click", function(event) {
     event.preventDefault();
-    window.location.replace("/customerlogin");
-    alert("Logged out!");
+    toastr.success("Successfully Logged Out!");
+    console.log("Successfully Logged Out!");
+    let delay = 1500;
+    setTimeout(function() {
+      window.location.replace("/customerlogin");
+    }, delay);
   });
 });
