@@ -100,12 +100,10 @@ module.exports = app => {
             { expiresIn: "24h" }
           );
 
-          return res
-            .status(200)
-            .cookie("jswt", `Bearer ${token}`, { maxAge: 60 * 60 * 24 * 1000 })
-            .json({
-              id: custId
-            });
+
+          return res.status(200).cookie("jswt",`Bearer ${token}`, {maxAge: 60*60*24*1000}).json({
+            id: custId
+          });
         });
       });
     })(req, res, next);

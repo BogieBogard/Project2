@@ -167,12 +167,6 @@ module.exports = app => {
 
   //route to hit when developer wants to update their profile
   app.put("/api/developer/:id", checkAuth, (req, res) => {
-    //assuming the request body is an object with all of the fields that need to be updated
-    //I need to send an entirely new object with ALL of the new values
-    //hitting update would need to send the post request and then
-    //set window.location.href = to the deveprofile page so the get request can be sent again
-    //and the page can be updated
-    // console.log(req.params.id)
     db.Developer.update(
       {
         html: req.body.html,
@@ -198,25 +192,53 @@ module.exports = app => {
       });
   });
 
+  app.get("/api/viewproject/:id", checkAuth, (req, res) => {
+    db.Project.findOne({
+      where: { id: req.params.id }
+    })
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   //this route handles the matchingggggg
   //removed check auth for testing
-  app.get("/api/projectmatch/:id", (req, res) => {
+  app.get("/api/projectmatch/:id", checkAuth, (req, res) => {
     //get projectId
     let projectId = req.params.id;
-
     try {
-      //inside project array we will have an array with the project parameters
-
-      console.log("we in here");
-      //inside devArr we will have an array with all of the dev objects that matched the project
-
-      //this resets the variance for the next search
       helper.projectQuery(projectId, result => {
+        console.log("This is the result of match call" ,result)
         res.status(200).json(result);
       });
     } catch (error) {
-      console.log(error);
+      console.log("Error in project match id: ", error);
     }
+  });
+
+  //routes hit when customer invite a developer
+  app.put("/api/project/:pid/developer/:did", checkAuth, (req, res) => {
+    db.Project.update(
+      {
+        DeveloperId: req.params.did
+      },
+      {
+        where: {
+          id: req.params.pid
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("developer invite updated");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // console.log("CLIKY HERE", req.params.pid)
+    // console.log(req.params.did)
   });
 
   //route hit when the developer accepts a project

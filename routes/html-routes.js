@@ -57,17 +57,15 @@ module.exports = app => {
             let projectinvite = result.filter(
               z => !z.isAssigned && !z.isComplete
             );
-            let openproject = result.filter(
-              b => b.isAssigned && !b.isComplete
-            );
-            let completeProjects = result.filter(
+            let openproject = result.filter(b => b.isAssigned && !b.isComplete);
+            let completeprojects = result.filter(
               x => x.isAssigned && x.isComplete
             );
             res.render("postAuth/developer/developerControl", {
               developer: userOb,
               projectinvite: projectinvite,
               openproject: openproject,
-              completeProjects: completeProjects
+              completeprojects: completeprojects
             });
           })
           .catch(err => {
@@ -101,6 +99,7 @@ module.exports = app => {
           .then(result => {
             let completeProjects = result.filter(x => x.isComplete == 1);
             let notCompleteProjects = result.filter(y => y.isComplete == 0);
+            console.log("Thisis the not complete project", notCompleteProjects)
             res.render("postAuth/customer/customerControl", {
               name: customerData.name,
               photo: customerData.photo,
