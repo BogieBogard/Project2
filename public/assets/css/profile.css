@@ -217,6 +217,55 @@ table th.customer-open-project-due-date {
   width: 15%;
 }
 
+div.project-dex{
+  color: gray;
+  width: 100%;
+}
+
+.language-shield{
+  color: gray;
+  text-align: center;
+}
+
+.project-assigned-view,
+.project-create-view,
+.project-complete-view{
+  text-align: center;
+  padding: 5px;
+}
+
+.project-assigned-view{
+  width: 100%;
+  color: coral;
+}
+
+.project-create-view,
+.project-complete-view{
+  background-color: rgb(230, 228, 228);
+  color: lightcoral;
+  width: 100%;
+}
+
+.project-budget,
+.project-host{
+  color: lightcoral;
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+.project-host{
+  text-align: right !important;
+}
+
+
+i span{
+  /* border: 1px solid red; */
+  font-size: .4em;
+  text-align: center;
+  display: block;
+  clear: left;
+}
+
 /* Media Query for Dynamic Page */
 @media screen and (max-width: 1280px) {
   .sidenav {

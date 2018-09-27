@@ -201,10 +201,44 @@ $(() => {
       },
       complete: result => {
         console.log("Complete GET request for project view", result);
-        $(".modal-body").html(""); // Used to clear the html for when the call happens again.
+        $(".modal-body").html(""); // Used to clear the html for when the call happens.
+        $(".modal-header").html(`<span class="close">&times;</span>`);
         let complete = result.responseJSON;
-        console.log("POST COMPLETE", complete);
-        $(".modal-body").append("<div>Hello this is </div>");
+        console.log("GET PROJECT DATA COMPLETE", complete);
+        $(".modal-header").append(
+          `<h3>Viewing Project #id: ${complete.id}</h3>`
+        );
+        $(".modal-body").append(
+          `<div class="Fac5"><div class="project-dex"><h5>Project Description:</h5><h6>>>>   ${
+            complete.description
+          }</h6></div><br><div class="language-shield">
+          <i class="fab fa-angular fa-4x"><span>${complete.angular}</i>
+          <i class="fab fa-css3-alt fa-4x"><span>${complete.css}</i>
+          <i class="fab fa-html5 fa-4x"><span>${complete.html}</span></i>
+          <i class="fab fa-java fa-4x"><span>${complete.java}</i>
+          <i class="fab fa-js-square fa-4x"><span>${complete.javascript}</i>
+          <i class="fab fa-node-js fa-4x"><span>${complete.nodeJS}</i>
+          <i class="fab fa-python fa-4x"><span>${complete.python}</i>
+          <i class="fab fa-react fa-4x"><span>${complete.react}</i>
+          </div><br>
+          <div class="project-create-view">Project Created: ${
+            complete.createdAt
+          }</div>
+          <div class="project-assigned-view">Project Assigned: ${
+            complete.updatedAt
+          }</div>
+          <div class="project-complete-view">Project Due-Date: ${
+            complete.dueDate
+          }</div>
+          <br>
+          <div class="project-budget"><h6>Project Budget: ${
+            complete.cost
+          }</h6></div>
+          <div class="project-host"><h6>Project Director: ${
+            complete.name
+          }</h6></div>
+          </div>`
+        );
       }
     }).then(result => {
       console.log("VIEW Result", result);
@@ -250,17 +284,20 @@ $(() => {
     });
   });
 
-  $(".close").on("click", () => {
-    $(".modal").css({
-      display: "none"
-    });
-  });
-
+  // this closes view project modal if clilcked outside of the box
   $(document).on("click", event => {
-    console.log(event.currentTarget)
-    if ($(event.currentTarget).closest(".modal-content")) {
+    console.log("Hitting Docuement", event.currentTarget);
+    if (event.target.closest(".close")) {
+      console.log("Clicked X");
+      $(".modal").css({
+        display: "none"
+      });
+    } else if (!event.target.closest(".modal-content")) {
+      $(".modal").css({
+        display: "none"
+      });
     } else {
-      console.log("not hitting modal");
+      console.log("hitting modal");
     }
   });
   $(document).on("click", ".send-invite", event => {
