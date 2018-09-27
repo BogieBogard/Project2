@@ -273,7 +273,7 @@ $(() => {
         $(".modal-body").html(""); // Used to clear the html for when the call happens again.
         let complete = result.responseJSON;
         // console.log("HELLO GLOP", result.responseJSON);
-        for (let i = 0; i < complete.length; i++) {
+        for (let i = 0; i < (complete.length && 3); i++) {
           let choice = complete[i];
           // console.log("Result Lenght", i);
           $(".modal-body").append(`<div class="card" id="${projectId}">
