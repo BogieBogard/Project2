@@ -75,6 +75,7 @@ $(() => {
       console.log("login please");
     });
   });
+
   $("#addProject").on("click", function(event) {
     event.preventDefault();
     let projectData = {
@@ -111,6 +112,7 @@ $(() => {
       alert("Project Added Successfully!");
     });
   });
+
   $(".completeButton").on("click", function(event) {
     let customerID = window.location.pathname.slice(17);
     let projectID = `${this.id}`;
@@ -128,23 +130,87 @@ $(() => {
     });
   });
 
-  //Developer Update Profiel Button
-  $("#profile-update").on("submit", () => {
+  //event listener for skill set update
+  $(document).on("click", "#updateProfile", event => {
     event.preventDefault();
-    console.log("Developer Profile Update Clicked");
-    let DevUpdate = {
-      html: $("#html").text(),
-      css: $("#css").text(),
-      javascript: $("#javascript").text(),
-      java: $("#javascript").text(),
-      nodeJS: $("#nodejs").text(),
-      angular: $("#angular").text(),
-      react: $("#react").text(),
-      python: $("#python").text()
+    //this will get the developer ID from the url string
+    // let devId = parseInt(window.location.href.slice(window.location.href.indexof("/",2) + 1));
+    let devId = window.location.pathname.split("/")[2];
+    // console.log("Developer URL" , devId); //this output just the developer ID
+
+    let devObj = {
+      id: devId,
+      html: $("#htmlUpdate").text(),
+      css: $("#cssUpdate").text(),
+      javascript: $("#javascriptUpdate").text(),
+      java: $("#javaUpdate").text(),
+      nodeJS: $("#nodejsUpdate").text(),
+      angular: $("#angularUpdate").text(),
+      react: $("#reactUpdate").text(),
+      python: $("#pythonUpdate").text()
     };
-    console.log(DevUpdate);
-    $.post("/api/developer/profileupdate", DevUpdate, () => {
-      console.log("Changed Developer Profile Settings");
+    console.log(typeof devObj);
+    $.ajax({
+      type: "PUT",
+      url: `/api/developer/${devId}`,
+      data: devObj,
+      // datatype: "obj",
+      success: result => {
+        console.log("put request was sent");
+        window.location.href = `/devProfile/${devId}`;
+      },
+      fail: err => {
+        console.log(err);
+      }
+    });
+  });
+
+  //accept project
+  $(document).on("click", ".developer-accept-request", e => {
+    event.preventDefault();
+
+    let devId = window.location.pathname.split("/")[2];
+
+    //need to get project ID from some html element
+    let projId = e.target.id;
+    $.ajax({
+      type: "PUT",
+      url: `/api/project/developer/${projId}`,
+      success: result => {
+        console.log("project status was successfully updated");
+        window.location.href = `/devProfile/${devId}`;
+      },
+      fail: err => {
+        console.log(err);
+      }
+    });
+  });
+
+  //Developer View Project Button
+  $(".developer-view-project").on("click", event => {
+    let targetView = event.currentTarget.id;
+    console.log("Viewing ", targetView);
+    $.ajax({
+      type: "GET",
+      url: `/api/viewproject/${targetView}`,
+      success: pending => {
+        console.log(`Getting Project matching ${targetView} ID`);
+      },
+      fail: err => {
+        console.log(err);
+      },
+      complete: result => {
+        console.log("Complete GET request for project view", result);
+        $(".modal-body").html(""); // Used to clear the html for when the call happens again.
+        let complete = result.responseJSON;
+        console.log("POST COMPLETE", complete);
+        $(".modal-body").append("<div>Hello this is </div>");
+      }
+    }).then(result => {
+      console.log("VIEW Result", result);
+      $(".modal").css({
+        display: "block"
+      });
     });
   });
 
@@ -190,10 +256,17 @@ $(() => {
     });
   });
 
+  $(document).on("click", event => {
+    console.log(event.currentTarget)
+    if ($(event.currentTarget).closest(".modal-content")) {
+    } else {
+      console.log("not hitting modal");
+    }
+  });
   $(document).on("click", ".send-invite", event => {
     // console.log(event.currentTarget.id) //VERY IMPORTANT! DO NOT DELETE! PATRICK WILL GET ANGRY AT YOU! >:()
-    let relocation = window.location.pathname.split('/');
-    console.log("Blu", relocation[2])
+    let relocation = window.location.pathname.split("/");
+    console.log("Blu", relocation[2]);
     let projectid = $(".card").attr("id");
     let developerid = event.currentTarget.id;
 
@@ -201,8 +274,8 @@ $(() => {
     let dataValues = {
       pid: projectid,
       did: developerid
-    }
-    console.log(dataValues)
+    };
+    console.log(dataValues);
     $.ajax({
       type: "PUT",
       url: `/api/project/${projectid}/developer/${developerid}`,

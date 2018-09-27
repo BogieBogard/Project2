@@ -192,6 +192,18 @@ module.exports = app => {
       });
   });
 
+  app.get("/api/viewproject/:id", checkAuth, (req, res) => {
+    db.Project.findOne({
+      where: { id: req.params.id }
+    })
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   //this route handles the matchingggggg
   //removed check auth for testing
   app.get("/api/projectmatch/:id", checkAuth, (req, res) => {
