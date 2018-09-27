@@ -174,12 +174,12 @@ $(() => {
   });
   $("#hibernateButton").on("click", function(event) {
     event.preventDefault();
-    toastr.success("Successfully Logged Out!");
     console.log("Successfully Logged Out!");
     $.ajax({
       type: "GET",
       url: "/logout/customer"
     }).then(result => {
+      toastr.success("Successfully Logged Out!");
       let delay = 1500;
       setTimeout(function() {
         window.location.replace("/customerlogin");
