@@ -109,4 +109,16 @@ module.exports = app => {
       });
     })(req, res, next);
   });
+
+  //customer logout
+  app.get("/logout/customer", checkAuth, (req, res) => {
+    console.log("cookie cleared");
+    res.clearCookie("jswt").status(200);
+  })
+
+  //developer logout
+  app.get("/logout/developer", checkAuth, (req, res) => {
+    console.log("cookie cleared");
+    res.clearCookie("jswt").status(200);
+  })
 };
