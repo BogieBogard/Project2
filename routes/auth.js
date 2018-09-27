@@ -1,6 +1,7 @@
 const db = require("../models");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const checkAuth = require("../check-auth.js");
 
 module.exports = app => {
   let devId;
