@@ -211,6 +211,7 @@ module.exports = app => {
     let projectId = req.params.id;
     try {
       helper.projectQuery(projectId, result => {
+        console.log("This is the result of match call" ,result)
         res.status(200).json(result);
       });
     } catch (error) {
