@@ -9,12 +9,12 @@
                 <th class="customer-completed-project-finish-date">Finished Date</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="project-table">
             {{#each completeProjects}} 
             <tr>
                 <td>{{this.id}}</td>
-                <td>{{this.name}}</td>
                 <td>{{this.description}}</td>
+                <td>{{this.dueDate}}</td>
                 <td>{{this.updatedAt}}</td>
             </tr>
             {{/each}}

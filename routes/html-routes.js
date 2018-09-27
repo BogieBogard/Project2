@@ -99,6 +99,7 @@ module.exports = app => {
           .then(result => {
             let completeProjects = result.filter(x => x.isComplete == 1);
             let notCompleteProjects = result.filter(y => y.isComplete == 0);
+            console.log("Thisis the not complete project", notCompleteProjects)
             res.render("postAuth/customer/customerControl", {
               name: customerData.name,
               photo: customerData.photo,
