@@ -119,7 +119,7 @@ $(() => {
       console.log("Project Added!");
       let delay = 1500;
       setTimeout(function() {
-        window.location.href = `/customerProfile/${customerID}#open-projects`;
+        window.location.href = `/customerProfile/${customerID}`;
       }, delay);
     });
   });
@@ -137,7 +137,7 @@ $(() => {
       console.log("put request was sent");
       let delay = 1500;
       setTimeout(function() {
-        window.location.href = `/customerProfile/${customerID}#completed-projects`;
+        window.location.href = `/customerProfile/${customerID}`;
       }, delay);
     });
   });
