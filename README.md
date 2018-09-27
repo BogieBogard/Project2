@@ -1,8 +1,50 @@
-# Project2
+# DevTinder
 
-Target Audience: Bootcamp students, Bootcamp grads, Junior Developers, and Any developer looking to make some side money.
+Team Members: Juan Varon, Patrick Wang, Ricardo Bentin, Spencer Callaway
 
-Full Idea: Platform to connect customers who need dev support on a project to developers who can work on their projects based on their expertise
+Target Audience: bootcamp students, bootcamp grads, junior Developers, and any developer looking to gain experience while making money and an impact at the same time.
+
+Minimum Viable Product: 
+  * Able to register as a developer and / or customer
+  * Customer able to:
+    * Create a new project
+    * Assign new project to developer that gets matched
+    * Review current projects
+    * Complete projects
+  * Developer able to:
+    * Review new project matches
+    * Review current projects
+  * Platform able to match a developer to a new project based on how closely the expertise required on the project matches with the expertise given by the developer during sign up
+  * Create Mysql database to store project, customer, and developer data
+  * Leverage sequelize ORM and MVC
+  * Front-end with sign-up, profile, and project views via handlebars
+  * Authentication via passport, bcrypt, and Jason Web Token
+  * Notifications via toastr
+  * NPM packages used:
+    * bCrypt
+    * Body-Parser
+    * Cookie-Parser
+    * Express
+    * Express-Handlebars
+    * JasonWebToken
+    * Mysql
+    * Mysql2
+    * Passport
+    * Sequelize
+    * Toastr
+
+Access to application:
+* https://devtindergroup1.herokuapp.com OR
+* Run locally: make sure to run NPM - install and be sure to setup your local database by first creating the schema from the DB folder and updating you credentials for the development object in config.json. Once you have initiated the app, sequelize will create the tables based on the models and you can populate data using the seeds file for each table.
+
+Dev Tinder Demo:
+
+{{Insert Demo Gifs Here}}
+
+
+Full Project Idea: 
+
+Platform to connect customers who need dev support on a project to developers who can work on their projects based on their expertise to gain experience to get closer to their dream jobs or make some extra money on the side
 
 Features:
 * Personas:
@@ -28,7 +70,6 @@ Features:
           * Customer contact information
           * Due date
           * Amount to be earned upon successful completion
-     
         
    * Customer (Project Owner)
       * Sign Up and Create Profile
@@ -71,22 +112,6 @@ Features:
 * Deployed via Heroku
 * Node application running on Express server
 
-MVP:
-  * Able to sign up developer and customer
-  * Customer able to:
-    * Create a new project
-    * Assign new project to developer
-    * Review current projects
-    * Leave a rating and review for developer upon completion
-  * Developer able to:
-    * Review new project matches
-    * Review current projects
-    * Complete tasks within each project
-    * Leave a rating and review for customer upon completion
-  * Platform able to match a developer to a new project based on how closely the expertise required on the project matches with the expertise given by the developer during sign up
-  * Create Mysql database to store project, customer, and developer data
-  * Leverage sequelize ORM and MVC
-  * Front-end with sign-up, profile, and project views
 
 
 
