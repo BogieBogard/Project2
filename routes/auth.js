@@ -1,6 +1,7 @@
 const db = require("../models");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+const checkAuth = require("../check-auth.js");
 
 module.exports = app => {
   let devId;
@@ -99,12 +100,24 @@ module.exports = app => {
             { expiresIn: "24h" }
           );
 
+
           return res.status(200).cookie("jswt",`Bearer ${token}`, {maxAge: 60*60*24*1000}).json({
             id: custId
           });
-
         });
       });
     })(req, res, next);
   });
+
+  //customer logout
+  app.get("/logout/customer", checkAuth, (req, res) => {
+    console.log("cookie cleared");
+    res.clearCookie("jswt").status(200);
+  })
+
+  //developer logout
+  app.get("/logout/developer", checkAuth, (req, res) => {
+    console.log("cookie cleared");
+    res.clearCookie("jswt").status(200);
+  })
 };
