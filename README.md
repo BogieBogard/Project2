@@ -39,7 +39,9 @@ Access to application:
 
 Dev Tinder Demo:
 
-{{Insert Demo Gifs Here}}
+Customer flow:
+
+<img src="https://github.com/DevTinder/Project2/blob/master/public/assets/img/CustomerFlow.gif" alt="Customer Flow">
 
 
 Full Project Idea: 
