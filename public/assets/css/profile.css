@@ -188,7 +188,7 @@ table th span {
 }
 /* Customer Add Project Table */
 table th.customer-add-project-description {
-width: 50%
+  width: 50%;
 }
 table th.customer-add-project-due-date,
 table th.customer-add-project-cost,
@@ -217,50 +217,49 @@ table th.customer-open-project-due-date {
   width: 15%;
 }
 
-div.project-dex{
+div.project-dex {
   color: gray;
   width: 100%;
 }
 
-.language-shield{
+.language-shield {
   color: gray;
   text-align: center;
 }
 
 .project-assigned-view,
 .project-create-view,
-.project-complete-view{
+.project-complete-view {
   text-align: center;
   padding: 5px;
 }
 
-.project-assigned-view{
+.project-assigned-view {
   width: 100%;
   color: coral;
 }
 
 .project-create-view,
-.project-complete-view{
+.project-complete-view {
   background-color: rgb(230, 228, 228);
   color: lightcoral;
   width: 100%;
 }
 
 .project-budget,
-.project-host{
+.project-host {
   color: lightcoral;
   width: 50%;
   float: left;
   text-align: left;
 }
-.project-host{
+.project-host {
   text-align: right !important;
 }
 
-
-i span{
+i span {
   /* border: 1px solid red; */
-  font-size: .4em;
+  font-size: 0.4em;
   text-align: center;
   display: block;
   clear: left;
@@ -314,4 +313,15 @@ i span{
     width: 100%;
     margin: 10px 0px;
   }
+}
+
+.flex.flex-3 div.col.align-center p:nth-child(3n) {
+  min-height: 150px;
+  max-height: 200px;
+}
+
+.flex.flex-3 div.col.align-center .button {
+  width: 100px;
+  padding: 0px;
+  margin: 0px;
 }
