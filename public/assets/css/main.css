@@ -2882,8 +2882,19 @@ table tbody tr {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-table tbody tr:nth-child(2n + 1) {
+table tbody.open-project-table tr:nth-child(4n + 2) {
   background-color: rgba(0, 0, 0, 0.075);
+  /* background-color: red; */
+}
+
+table tbody.open-project-table tr:nth-child(4n + 1) {
+  background-color: rgba(0, 0, 0, 0.075);
+  /* background-color: red; */
+}
+
+table tbody.project-table tr:nth-child(2n + 1) {
+  background-color: rgba(0, 0, 0, 0.075);
+  /* background-color: red; */
 }
 
 table th {

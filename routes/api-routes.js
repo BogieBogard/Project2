@@ -1,6 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcrypt-nodejs");
 const checkAuth = require("../check-auth.js");
+const helper = require("../helperObject");
 
 module.exports = app => {
   app.get("/api/developers", (req, res) => {
@@ -114,8 +115,30 @@ module.exports = app => {
     });
   });
 
+  //route to update the project to complete
+  app.put("/api/project", checkAuth, (req, res) => {
+    console.log("This is req.body: ", req.body);
+    console.log("This is req.params: ", req.params);
+    db.Project.update(
+      {
+        isComplete: true
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("project was completed!");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
   //this route creates a new project
-  app.post("/api/project", (req, res) => {
+  app.post("/api/project", checkAuth, (req, res) => {
     console.log("This is req.body", req.body);
 
     db.Project.create({
@@ -143,12 +166,7 @@ module.exports = app => {
   });
 
   //route to hit when developer wants to update their profile
-  app.post("/api/developer/:id", checkAuth, (req, res) => {
-    //assuming the request body is an object with all of the fields that need to be updated
-    //I need to send an entirely new object with ALL of the new values
-    //hitting update would need to send the post request and then
-    //set window.location.href = to the deveprofile page so the get request can be sent again
-    //and the page can be updated
+  app.put("/api/developer/:id", checkAuth, (req, res) => {
     db.Developer.update(
       {
         html: req.body.html,
@@ -174,11 +192,60 @@ module.exports = app => {
       });
   });
 
+  app.get("/api/viewproject/:id", checkAuth, (req, res) => {
+    db.Project.findOne({
+      where: { id: req.params.id }
+    })
+      .then(result => {
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+
+  //this route handles the matchingggggg
+  //removed check auth for testing
+  app.get("/api/projectmatch/:id", checkAuth, (req, res) => {
+    //get projectId
+    let projectId = req.params.id;
+    try {
+      helper.projectQuery(projectId, result => {
+        console.log("This is the result of match call" ,result)
+        res.status(200).json(result);
+      });
+    } catch (error) {
+      console.log("Error in project match id: ", error);
+    }
+  });
+
+  //routes hit when customer invite a developer
+  app.put("/api/project/:pid/developer/:did", checkAuth, (req, res) => {
+    db.Project.update(
+      {
+        DeveloperId: req.params.did
+      },
+      {
+        where: {
+          id: req.params.pid
+        }
+      }
+    )
+      .then(result => {
+        res.status(200).send("developer invite updated");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // console.log("CLIKY HERE", req.params.pid)
+    // console.log(req.params.did)
+  });
+
   //route hit when the developer accepts a project
   app.put("/api/project/developer/:id", checkAuth, (req, res) => {
     db.Project.update(
       {
-        isAssigned: 1
+        isAssigned: true
       },
       {
         where: {
@@ -189,27 +256,6 @@ module.exports = app => {
     )
       .then(result => {
         res.status(200).send("project was accepted");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
-  //route to update the project to complete
-  app.put("/api/project", (req, res) => {
-    console.log("This is req.body: ", req.body);
-    console.log("This is req.params: ", req.params);
-    db.Project.update(
-      {
-        isComplete: true
-      },
-      {
-        where: {
-          id: req.body.id
-        }
-      }
-    )
-      .then(result => {
-        res.status(200).send("project was completed!");
       })
       .catch(err => {
         console.log(err);

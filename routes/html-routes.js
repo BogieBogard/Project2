@@ -18,44 +18,28 @@ module.exports = app => {
     res.render("partials/Customer/customerlogin");
   });
 
-  app.get("/allpagedisplay", (req, res) => {
-    console.log("Front End All Page Test Call");
-    res.render("layouts/allpageload");
-  });
-
-  // developer login -- forget password -- Signup
   app.get("/developerlogin", (req, res) => {
     console.log("Developer Main Page");
     res.render("partials/Developer/developerlogin");
   });
 
-  // developer login > Signup
   app.get("/newdeveloper", (req, res) => {
     console.log("Developer Signup");
     res.render("partials/Developer/developerSignup");
   });
 
-  // customer login > Signup
   app.get("/newcustomer", (req, res) => {
     console.log("Customer Signup");
     res.render("partials/Customer/customerSignup");
   });
-  //route to add a new project
+
   app.get("/newproject", checkAuth, (req, res) => {
     console.log("Create a Project Section");
     res.render("partials/Customer/CustomerControlMenu/addproject");
   });
 
   //what the developer sees after logging in
-
   app.get("/devProfile/:id", checkAuth, (req, res) => {
-    console.log("made it to the profile pages");
-    console.log("Developer Control");
-
-    console.log(req.cookies);
-    //we have to get the object from the developer database
-    let userOb;
-    let projArr = [];
     db.Developer.findOne({
       where: {
         id: req.params.id
@@ -63,38 +47,33 @@ module.exports = app => {
     })
       .then((result, err) => {
         if (err) throw err;
-        userOb = result.dataValues;
-        //now we have to get all of the project objects from
-        //the projects table
-      })
-      .then(() => {
+        let userOb = result.dataValues;
         db.Project.findAll({
           where: {
             DeveloperId: req.params.id
           }
         })
           .then(result => {
-            result.map(x => {
-              console.log(x.dataValues);
-              projArr.push(x.dataValues);
+            let projectinvite = result.filter(
+              z => !z.isAssigned && !z.isComplete
+            );
+            let openproject = result.filter(b => b.isAssigned && !b.isComplete);
+            let completeprojects = result.filter(
+              x => x.isAssigned && x.isComplete
+            );
+            res.render("postAuth/developer/developerControl", {
+              developer: userOb,
+              projectinvite: projectinvite,
+              openproject: openproject,
+              completeprojects: completeprojects
             });
-
-            console.log(projArr);
-            //placing the entirity of the project object that was returned
-            //in the userOb under the project key
-            //need to store the project id somewhere we can access it in order to make changes to the accepted
-            //and done status
-            userOb.project = projArr;
-            console.log(userOb);
-            //res.render("postAuth/developer/developerControl", userOb);
-            res.render("postAuth/developer/developerControl");
           })
           .catch(err => {
-            console.log(err);
+            if (err) throw err;
           });
       })
       .catch(err => {
-        console.log(err);
+        if (err) throw err;
       });
   });
 
@@ -103,33 +82,37 @@ module.exports = app => {
     console.log("made it to the cust profile page");
     console.log("Customer Control");
     let customerData;
-    let projectArr = [];
+
     db.Customer.findOne({
       where: {
         id: req.params.id
       }
-    }).then((result, err) => {
-      if (err) throw err;
-      customerData = result.dataValues;
-      console.log("This is CustomerId: ", req.params.id);
-      db.Project.findAll({
-        where: {
-          CustomerId: req.params.id
-        }
-      }).then(result => {
-        let completeProjects = result.filter(x => x.isComplete == 1);
-        let notCompleteProjects = result.filter(y => y.isComplete == 0);
-        console.log("This is projectArr ", projectArr);
-        console.log("This is customerData", customerData);
-        customerData.project = projectArr;
-        console.log(customerData.project);
-        res.render("postAuth/customer/customerControl", {
-          name: customerData.name,
-          photo: customerData.photo,
-          completeProjects: completeProjects,
-          notCompleteProjects: notCompleteProjects
-        });
+    })
+      .then((result, err) => {
+        if (err) throw err;
+        customerData = result.dataValues;
+        db.Project.findAll({
+          where: {
+            CustomerId: req.params.id
+          }
+        })
+          .then(result => {
+            let completeProjects = result.filter(x => x.isComplete == 1);
+            let notCompleteProjects = result.filter(y => y.isComplete == 0);
+            console.log("Thisis the not complete project", notCompleteProjects)
+            res.render("postAuth/customer/customerControl", {
+              name: customerData.name,
+              photo: customerData.photo,
+              completeProjects: completeProjects,
+              notCompleteProjects: notCompleteProjects
+            });
+          })
+          .catch(err => {
+            if (err) throw err;
+          });
+      })
+      .catch(err => {
+        if (err) throw err;
       });
-    });
   });
 };

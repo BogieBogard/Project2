@@ -1,28 +1,34 @@
 <div class="table-wrapper">
     <h2>Open Projects</h2>
-    <table>
+     <table>
         <thead>
             <tr>
                 <th class="customer-open-project-id">Project id#</th>
-                <th class="customer-open-project-name">Project Name</th>
-                <th class="customer-open-project-description">Project Description</span></th>
+                {{!--
+                <th class="customer-open-project-name">Project Name</th> --}}
+                <th class="customer-open-project-description" colspan="3">Project Description</span></th>
                 <th class="customer-open-project-add-developer">Add Developer</th>
-                <th class="customer-open-project-number-developer"># Developer Assigned</th>
-                <th class="customer-open-project-due-date">Due Date</th>
+            </tr>
+            <tr>
+                <th class="customer-open-project-name">Project Name</th>
+                <th class="customer-open-project-number-developer">Dev-Id# Invited</th>
+                <th class="customer-open-project-due-date" colspan="2">Due Date</th>
                 <th class="customer-open-project-complete?">Complete?</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="open-project-table">
 
             {{#each notCompleteProjects}}
             <tr>
                 <td>{{this.id}}</td>
+                <td colspan="3">{{this.description}}</td>
+                <td><a href="" data-id={{this.id}} class="matchButton button fit small icon fa-plus">Match Developer</a></td>
+            </tr>
+            <tr>
                 <td>{{this.name}}</td>
-                <td>{{this.description}}</td>
-                <td><a href="" class="button fit small icon fa-plus">Match Developer</a></td>
                 <td>{{this.DeveloperId}}</td>
-                <td>{{this.dueDate}}</td>
-                <td><button class="completeButton" id="{{this.id}}">Click to Complete</button></td>
+                <td colspan="2">{{this.dueDate}}</td>
+                <td><a class="completeButton button alt fit small icon fa-check" id="{{this.id}}">Click to Complete</a></td>
             </tr>
             {{/each}}
 

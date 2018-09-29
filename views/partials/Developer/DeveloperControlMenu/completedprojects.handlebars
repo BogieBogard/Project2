@@ -10,12 +10,14 @@
             </tr>
         </thead>
         <tbody>
+            {{#each completeprojects}}
             <tr>
-                <td>Item 1</td>
-                <td>Ante turpis integer aliquet porttitor.</td>
-                <td>2019-05-14</td>
-                <td>2019-04-28</td>
+                <td>{{this.id}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.dueDate}}</td>
+                <td>{{this.updatedAt}}</td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
 </div>

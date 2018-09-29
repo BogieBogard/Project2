@@ -1,16 +1,26 @@
 <div class="profileparent">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Project Information ...</h2>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
     <div class="sidenav">
         <div class="image round fit">
-            <img src="/assets/img/exampledeveloper.jpg" alt="developer photo" />
+            <img src="{{developer.photo}}" alt="developer photo" />
         </div>
         <div class="navlist">
-            <h4>Laura Davis</h4>
+            <h4>{{developer.name}}</h4>
 
             <a href="#profile-settings" class="button alt small fit icon fa-info-circle">Profile Settings</a>
             <a href="#open-invites" class="button alt small fit icon fa-inbox">Open Invites</a>
             <a href="#open-projects" class="button alt small fit icon fa-folder-open">Open Projects</a>
             <a href="#completed-projects" class="button alt small fit icon fa-briefcase">Completed Projects</a>
-            <a href="#hibernate" class="button alt small fit icon fa-plus">Hibernate</a>
+            <a href="Javascript:;" class="button alt small fit icon fa-plus" id="hibernateButton">Hibernate</a>
         </div>
     </div>
     <div class="developercontrol-view">
