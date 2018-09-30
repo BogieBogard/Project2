@@ -112,12 +112,12 @@ module.exports = app => {
   //customer logout
   app.get("/logout/customer", checkAuth, (req, res) => {
     console.log("cookie cleared");
-    res.clearCookie("jswt").status(200);
+    res.clearCookie("jswt").status(200).send("cleared");
   })
 
   //developer logout
   app.get("/logout/developer", checkAuth, (req, res) => {
     console.log("cookie cleared");
-    res.clearCookie("jswt").status(200);
+    res.clearCookie("jswt").status(200).send("cleared")
   })
 };
