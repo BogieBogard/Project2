@@ -339,11 +339,31 @@ $(() => {
 
   $("#hibernateButton").on("click", function(event) {
     event.preventDefault();
-    toastr.success("Successfully Logged Out!");
-    console.log("Successfully Logged Out!");
-    let delay = 1500;
-    setTimeout(function() {
-      window.location.replace("/customerlogin");
-    }, delay);
+    $.ajax({
+      type: "GET",
+      url: "/logout/customer"
+    }).then(result => {
+      toastr.success("Successfully Logged Out!");
+      console.log("Successfully Logged Out!");
+      let delay = 1500;
+      setTimeout(function() {
+        window.location.href = "/customerlogin";
+      }, delay);
+    });
+  });
+
+  $("#hibernateD").on("click", function(event) {
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: "/logout/developer"
+    }).then(result => {
+      toastr.success("Successfully Logged Out!");
+      console.log("Successfully Logged Out!");
+      let delay = 1500;
+      setTimeout(function() {
+        window.location.href = "/developerlogin";
+      }, delay);
+    });
   });
 });
